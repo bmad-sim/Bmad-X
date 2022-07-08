@@ -1,9 +1,0 @@
-LICENSE
-README.md
-setup.py
-bmadx/__init__.py
-bmadx/track.py
-bmadx.egg-info/PKG-INFO
-bmadx.egg-info/SOURCES.txt
-bmadx.egg-info/dependency_links.txt
-bmadx.egg-info/top_level.txt
