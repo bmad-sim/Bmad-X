@@ -49,7 +49,7 @@ class TestBmadxTorch:
         x_py = torch.hstack([p_out.x,p_out.px,p_out.y,
                              p_out.py,p_out.z,p_out.pz]).detach()
         
-        tao = Tao('-lat bmad_lattices/test_drift.bmad -noplot')
+        tao = Tao('-lat tests/bmad_lattices/test_drift.bmad -noplot')
         set_tao(tao, self.pvec1)
         orbit_out=tao.orbit_at_s(ele=1)
         x_tao = torch.tensor([orbit_out['x'],orbit_out['px'],
@@ -77,7 +77,7 @@ class TestBmadxTorch:
         p_out = track_a_quadrupole_torch(self.p_in, q1)
         x_py = torch.hstack(p_out[:6]).detach()
         
-        tao = Tao('-lat bmad_lattices/test_quad.bmad -noplot')
+        tao = Tao('-lat tests/bmad_lattices/test_quad.bmad -noplot')
         set_tao(tao, self.pvec1)
         orbit_out = tao.orbit_at_s(ele=1)
         
@@ -113,7 +113,7 @@ class TestBmadxTorch:
         p_out = track_a_quadrupole_torch(self.p_in, q1)
         x_py = torch.hstack(p_out[:6]).detach()
         
-        tao = Tao('-lat bmad_lattices/test_quad_offset.bmad -noplot')
+        tao = Tao('-lat tests/bmad_lattices/test_quad_offset.bmad -noplot')
         set_tao(tao, self.pvec1)
         orbit_out = tao.orbit_at_s(ele=1)
         
@@ -147,7 +147,7 @@ class TestBmadxTorch:
         p_out = track_a_quadrupole_torch(self.p_in, q1)
         x_py = torch.hstack(p_out[:6]).detach()
         
-        tao = Tao('-lat bmad_lattices/test_quad_tilt.bmad -noplot')
+        tao = Tao('-lat tests/bmad_lattices/test_quad_tilt.bmad -noplot')
         set_tao(tao, self.pvec1)
         orbit_out = tao.orbit_at_s(ele=1)
         
@@ -183,7 +183,7 @@ class TestBmadxTorch:
         # Outgoing particle after complete lattice:
         x_py = torch.hstack(track_a_lattice(self.p_in, lattice)[-1][:6]).detach()
         # Bmad lattice to compare
-        tao = Tao('-lat bmad_lattices/test_drift_quad.bmad -noplot')
+        tao = Tao('-lat tests/bmad_lattices/test_drift_quad.bmad -noplot')
         set_tao(tao, self.pvec1)
         orbit_out = tao.orbit_at_s(ele=5)
         x_tao = torch.tensor([orbit_out['x'],orbit_out['px'],orbit_out['y'],orbit_out['py'],orbit_out['z'],orbit_out['pz']],**tkwargs)

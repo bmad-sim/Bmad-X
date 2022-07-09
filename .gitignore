@@ -3,4 +3,6 @@ bmadx.egg-info
 .ipynb_checkpoints
 misc
 .nfs*
-bmad_lattices/*digested*
+**/*digested*
+**/__pycache__
+*.pyc
