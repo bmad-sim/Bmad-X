@@ -1,0 +1,14 @@
+parameter[lattice] = test_quad
+
+beginning[beta_a] = 10
+beginning[beta_b] = 10
+
+beginning[p0c] = 4.0e7
+parameter[particle] = electron
+parameter[geometry] = open
+
+q1: quad, L = 0.1, K1 = 0.0
+
+lat: line = (q1)
+
+use, lat

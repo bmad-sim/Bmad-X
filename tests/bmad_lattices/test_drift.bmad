@@ -1,0 +1,14 @@
+parameter[lattice] = test_drift
+
+beginning[beta_a] = 10
+beginning[beta_b] = 10
+
+beginning[p0c] = 4.0e7
+parameter[particle] = electron
+parameter[geometry] = open
+
+d1: drift, L = 1.0
+
+lat: line = (d1)
+
+use, lat
