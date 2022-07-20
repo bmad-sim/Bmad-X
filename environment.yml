@@ -9,7 +9,8 @@ dependencies:
   - pytorch
   - numdifftools
   - kornia
-# Developer
+  - cudatoolkit
+  - ipykernel
   - pytest
   - pytao
   - matplotlib
