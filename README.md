@@ -5,5 +5,7 @@ Installation
 ============
 ```shell
 git clone https://github.com/bmad-sim/Bmad-X.git
-pip install -e .
+conda env create -f environment.yml
+conda activate bmadx
+pip install --no-dependencies -e .
 ```

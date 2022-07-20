@@ -1,0 +1,15 @@
+# conda env create -f environment.yml
+name: bmadx
+channels:
+  - conda-forge
+dependencies:
+  - python=3.9
+  - numpy
+  - numba
+  - pytorch
+  - numdifftools
+  - kornia
+# Developer
+  - pytest
+  - pytao
+  - matplotlib
