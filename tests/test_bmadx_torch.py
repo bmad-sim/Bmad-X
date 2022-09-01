@@ -55,7 +55,7 @@ class TestBmadxTorch:
         x_tao = torch.tensor([orbit_out['x'],orbit_out['px'],
                               orbit_out['y'],orbit_out['py'],
                               orbit_out['z'],orbit_out['pz']],**tkwargs)
-        assert torch.allclose(x_py, x_tao)
+        assert torch.allclose(x_py, x_tao, atol=0, rtol=1.0e-14)
         
         # test Taylor map
         f_drift = lambda x: track_a_drift_torch(Particle(*x, self.ts,
@@ -65,7 +65,7 @@ class TestBmadxTorch:
         mat_py = torch.vstack(J)
         drift_tao = tao.matrix(0,1)
         mat_tao = torch.tensor(drift_tao['mat6'], **tkwargs)
-        assert torch.allclose(mat_py, mat_tao)
+        assert torch.allclose(mat_py, mat_tao, atol=0, rtol=1.0e-14)
         
     def test_quadrupole(self):
         # no offset nor tilt
@@ -85,7 +85,7 @@ class TestBmadxTorch:
                               orbit_out['y'],orbit_out['py'],
                               orbit_out['z'],orbit_out['pz']],**tkwargs)
         
-        assert torch.allclose(x_py, x_tao)
+        assert torch.allclose(x_py, x_tao, atol=0, rtol=1.0e-14)
         
         # test Taylor map
         f_quadrupole = lambda x: track_a_quadrupole_torch(Particle(*x,
@@ -97,7 +97,7 @@ class TestBmadxTorch:
         mat_py = torch.vstack(J)
         quad_tao = tao.matrix(0,1)
         mat_tao = torch.tensor(quad_tao['mat6'], **tkwargs)
-        assert torch.allclose(mat_py, mat_tao)
+        assert torch.allclose(mat_py, mat_tao, atol=0, rtol=1.0e-14)
     
     def test_quadrupole_offset(self):
         # x-y offset, no tilt
@@ -121,7 +121,7 @@ class TestBmadxTorch:
                               orbit_out['y'],orbit_out['py'],
                               orbit_out['z'],orbit_out['pz']],**tkwargs)
         
-        assert torch.allclose(x_py, x_tao)
+        assert torch.allclose(x_py, x_tao, atol=0, rtol=1.0e-14)
         
         # test Taylor map
         f_quadrupole = lambda x: track_a_quadrupole_torch(Particle(*x,
@@ -133,7 +133,7 @@ class TestBmadxTorch:
         mat_py = torch.vstack(J)
         quad_tao = tao.matrix(0,1)
         mat_tao = torch.tensor(quad_tao['mat6'], **tkwargs)
-        assert torch.allclose(mat_py, mat_tao)
+        assert torch.allclose(mat_py, mat_tao, atol=0, rtol=1.0e-14)
         
     def test_quadrupole_tilt(self):
         # tilt, no offset
@@ -154,7 +154,7 @@ class TestBmadxTorch:
         x_tao = torch.tensor([orbit_out['x'],orbit_out['px'],
                               orbit_out['y'],orbit_out['py'],
                               orbit_out['z'],orbit_out['pz']],**tkwargs)
-        assert torch.allclose(x_py, x_tao)
+        assert torch.allclose(x_py, x_tao, atol=0, rtol=1.0e-14)
         
         # test Taylor map
         f_quadrupole = lambda x: track_a_quadrupole_torch(Particle(*x,
@@ -166,7 +166,7 @@ class TestBmadxTorch:
         mat_py = torch.vstack(J)
         quad_tao = tao.matrix(0,1)
         mat_tao = torch.tensor(quad_tao['mat6'], **tkwargs)
-        assert torch.allclose(mat_py, mat_tao)
+        assert torch.allclose(mat_py, mat_tao, atol=0, rtol=1.0e-14)
         
     def test_lattice(self):
         # Create drift
@@ -187,7 +187,7 @@ class TestBmadxTorch:
         set_tao(tao, self.pvec1)
         orbit_out = tao.orbit_at_s(ele=5)
         x_tao = torch.tensor([orbit_out['x'],orbit_out['px'],orbit_out['y'],orbit_out['py'],orbit_out['z'],orbit_out['pz']],**tkwargs)
-        assert torch.allclose(x_py, x_tao)
+        assert torch.allclose(x_py, x_tao, atol=0, rtol=1.0e-14)
         
         # test Taylor map
         f_driftquadrupole = lambda x: track_a_lattice(Particle(*x, self.ts, self.tp0c, self.tmc2), lattice)[-1][:6]
@@ -196,7 +196,7 @@ class TestBmadxTorch:
         # Bmad Jacobian
         lat_tao = tao.matrix(0,5)
         mat_tao = torch.tensor(lat_tao['mat6'], **tkwargs)
-        assert torch.allclose(mat_py, mat_tao)
+        assert torch.allclose(mat_py, mat_tao, atol=0, rtol=1.0e-14)
 
     def test_hessian(self):
         # Particle bunch with Gaussian distribution
