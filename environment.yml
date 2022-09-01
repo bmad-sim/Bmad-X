@@ -13,5 +13,6 @@ dependencies:
   # - cudatoolkit
   - ipykernel # python -m ipykernel install --user --name bmadx --display-name Bmad-X
   - pytest
+  - bmad
   - pytao
   - matplotlib
