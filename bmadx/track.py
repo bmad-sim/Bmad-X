@@ -1,10 +1,6 @@
 from collections import namedtuple
 import sys
 import math
-import torch
-tkwargs = {
-    "dtype" : torch.double
-}
 
 #--------------------
 # Named tuples for elements and particles
@@ -27,6 +23,12 @@ Quadrupole = namedtuple('Quadrupole',
 def make_track_a_drift(lib):
     """Makes track_a_drift given the library lib."""
     sqrt = lib.sqrt
+    
+    def sqrt_one(x):
+        """Routine to calculate Sqrt[1+x] - 1 to machine precision."""
+        sq = sqrt(1 + x)
+        rad = sq + 1
+        return x/rad
     
     def track_a_drift(p_in, drift):
         """Tracks the incoming Particle p_in though drift element
@@ -55,9 +57,10 @@ def make_track_a_drift(lib):
         x = x + L * Px / Pl
         y = y + L * Py / Pl
         
-        beta = P * p0c / sqrt( (P*p0c)**2 + mc2**2)
-        beta_ref = p0c / sqrt( p0c**2 + mc2**2)
-        z = z + L * ( beta/beta_ref - 1.0/Pl )
+        # z = z + L * ( beta/beta_ref - 1.0/Pl ) but numerically accurate:
+        dz = L * (sqrt_one((mc2**2 * (2*pz+pz**2))/((p0c*P)**2 + mc2**2))
+                  + sqrt_one(-Pxy2)/Pl)
+        z = z + dz
         s = s + L
         
         return Particle(x, px, y, py, z, pz, s, p0c, mc2)
