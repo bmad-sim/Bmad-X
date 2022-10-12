@@ -334,7 +334,7 @@ def make_track_a_sbend_parts(lib):
         
         FH1 = f_int*h_gap
         c1 = 6*g_tot * FH1**2/(1+pz)
-        c2 = 2*g_tot**2 * FH1**2/(1+pz)
+        c2 = 2*g_tot**2 * FH1/(1+pz)
         c3 = g_tot**2 /18 /FH1/(1+pz)
 
         xf = x + c1*pz
@@ -375,7 +375,7 @@ def make_track_a_sbend_parts(lib):
         
         FH1 = f_int*h_gap
         c1 = 6*g_tot * FH1**2/(1+pz)
-        c2 = 2*g_tot**2 * FH1**2/(1+pz)
+        c2 = 2*g_tot**2 * FH1/(1+pz)
         c3 = g_tot**2 /18 /FH1/(1+pz)
 
         xf = x + c1*pz
