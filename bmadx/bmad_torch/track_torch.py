@@ -1,6 +1,5 @@
 import torch
 from torch import Tensor
-from torch.autograd.functional import jacobian
 from torch.nn import Module, ModuleList, Parameter
 
 from bmadx import track

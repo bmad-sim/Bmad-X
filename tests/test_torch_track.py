@@ -2,12 +2,12 @@ import torch
 
 from bmadx.bmad_torch.track_torch import (
     Beam,
-    get_transport_matrix,
     TorchCrabCavity,
     TorchDrift,
     TorchLattice,
     TorchQuadrupole,
 )
+from bmadx.bmad_torch.utils import get_transport_matrix
 
 
 def test_lattice():
