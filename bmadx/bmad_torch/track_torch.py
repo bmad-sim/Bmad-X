@@ -6,21 +6,38 @@ from bmadx import track
 
 
 class Beam(torch.nn.Module):
-    def __init__(self, data, p0c: float, s: float = 0.0, mc2: float = 0.511e6):
+    def __init__(self, data, p0c, s=torch.tensor(0.0), mc2=torch.tensor(0.511e6)):
         super(Beam, self).__init__()
         self.keys = ["x", "px", "y", "py", "z", "pz"]
-        self.data = data
 
-        for i, key in enumerate(self.keys):
-            self.register_parameter(key, Parameter(data[..., i], requires_grad=False))
+        self.register_buffer("data", data)
+        self.register_parameter("p0c", Parameter(p0c, requires_grad=False))
+        self.register_parameter("s", Parameter(s, requires_grad=False))
+        self.register_parameter("mc2", Parameter(mc2, requires_grad=False))
 
-        self.register_parameter(
-            "p0c", Parameter(torch.tensor(p0c), requires_grad=False)
-        )
-        self.register_parameter("s", Parameter(torch.tensor(s), requires_grad=False))
-        self.register_parameter(
-            "mc2", Parameter(torch.tensor(mc2), requires_grad=False)
-        )
+    @property
+    def x(self):
+        return self.data[:, 0]
+
+    @property
+    def px(self):
+        return self.data[:, 1]
+
+    @property
+    def y(self):
+        return self.data[:, 2]
+
+    @property
+    def py(self):
+        return self.data[:, 3]
+
+    @property
+    def z(self):
+        return self.data[:, 4]
+
+    @property
+    def pz(self):
+        return self.data[:, 5]
 
     def to_list_of_beams(self):
         beams = []
