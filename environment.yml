@@ -1,5 +1,5 @@
 # conda env create -f environment.yml
-name: bmadx
+name: bmadx-dev
 channels:
   - conda-forge
 dependencies:
@@ -9,8 +9,10 @@ dependencies:
   - pytorch
   - numdifftools
   - kornia
-  - cudatoolkit
-  - ipykernel
+  # - bmad
+  # - cudatoolkit
+  - ipykernel # python -m ipykernel install --user --name bmadx --display-name Bmad-X
   - pytest
+  - bmad
   - pytao
   - matplotlib
