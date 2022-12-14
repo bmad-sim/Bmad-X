@@ -1,10 +1,10 @@
-from bmadx.bmad.modules.bmad_struct import Particle, Drift
+from bmadx.bmad.modules import Particle, Drift
 from bmadx.bmad.code.offset_particle import make_offset_particle
 from bmadx.bmad.code.particle_rf_time import make_particle_rf_time
 from .track_a_drift import make_track_a_drift
 from .apply_energy_kick import make_apply_energy_kick
 from bmadx.sim_utils.special_functions.sqrt_one import make_sqrt_one
-from bmadx.sim_utils.interfaces.physical_constants import C_LIGHT, PI
+from bmadx.sim_utils.interfaces.constants import C_LIGHT, PI
 
 def make_track_a_rf_cavity(lib):
     """Makes track_a_crab_cavity given the library lib."""

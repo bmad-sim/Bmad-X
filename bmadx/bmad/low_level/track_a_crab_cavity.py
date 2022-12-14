@@ -1,8 +1,8 @@
-from bmadx.bmad.modules.bmad_struct import Particle, Drift
+from bmadx.bmad.modules import Particle, Drift
 from bmadx.bmad.code.offset_particle import make_offset_particle
 from bmadx.bmad.code.particle_rf_time import make_particle_rf_time
 from bmadx.bmad.low_level.track_a_drift import make_track_a_drift
-from bmadx.sim_utils.interfaces.physical_constants import C_LIGHT, PI
+from bmadx.sim_utils.interfaces.constants import C_LIGHT, PI
 
 def make_track_a_crab_cavity(lib):
     """Makes track_a_crab_cavity given the library lib."""

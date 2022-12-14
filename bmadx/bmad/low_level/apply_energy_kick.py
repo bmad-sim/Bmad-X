@@ -1,4 +1,4 @@
-from bmadx.bmad.modules.bmad_struct import Particle
+from bmadx.bmad.modules import Particle
 from bmadx.sim_utils.special_functions.sqrt_one import make_sqrt_one
 
 def make_apply_energy_kick(lib):

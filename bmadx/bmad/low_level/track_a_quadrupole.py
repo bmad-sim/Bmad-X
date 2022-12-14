@@ -1,4 +1,4 @@
-from bmadx.bmad.modules.bmad_struct import Particle
+from bmadx.bmad.modules import Particle
 from bmadx.bmad.code.offset_particle import make_offset_particle
 from bmadx.bmad.code.low_energy_z_correction import make_low_energy_z_correction
 from .quad_mat2_calc import make_quad_mat2_calc

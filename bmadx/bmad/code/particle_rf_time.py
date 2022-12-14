@@ -1,4 +1,4 @@
-from bmadx.sim_utils.interfaces.physical_constants import C_LIGHT
+from bmadx.sim_utils.interfaces.constants import C_LIGHT
 
 def make_particle_rf_time(lib):
     """Makes function given library lib."""
