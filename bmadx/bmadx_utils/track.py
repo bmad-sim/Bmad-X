@@ -8,8 +8,14 @@ def track_element(p_in, ele):
     Returns outgoing Particle.
     """
     lib = sys.modules[type(p_in.x).__module__]
-    lib_ele = make_element(ele, lib)
-    track_f = LIB_DICT[lib]['tracking_routine'][type(ele).__name__]
+    params = [*ele]
+    for i, param in enumerate(params):
+        if sys.modules[type(param).__module__] != lib and type(param) != int:
+            params[i] = LIB_DICT[lib]['construct_type'](param, dtype = p_in.x.dtype)
+            
+    lib_ele = ele._make(params)
+    track_f = LIB_DICT[lib]['tracking_routine'][type(lib_ele).__name__]
+    
     return track_f(p_in, lib_ele)
 
 def track_lattice(p_in, ele_list):
@@ -73,7 +79,7 @@ def make_element(ele, lib):
     params = [*ele]
     for i, param in enumerate(params):
         if sys.modules[type(param).__module__] != lib:
-            params[i] = LIB_DICT[lib]['construct_type'](param)
+            params[i] = LIB_DICT[lib]['construct_type'](param, dtype=p.dtype)
             
     return ele._make(params)
 
