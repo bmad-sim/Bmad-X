@@ -1,0 +1,363 @@
+{
+    "alloc_samples": 573,
+    "elapsed_time_sec": 0.8493742942810059,
+    "files": {
+        "./torch_module_profiling.py": {
+            "functions": [
+                {
+                    "line": "create_gaussian_beam",
+                    "lineno": 11,
+                    "memory_samples": [
+                        [
+                            589452417,
+                            80.63914807820859
+                        ]
+                    ],
+                    "n_avg_mb": 7.409337043762207,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.3410517164235192,
+                    "n_cpu_percent_python": 1.1833855531697162,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 7.409337043762207,
+                    "n_malloc_mb": 7.409337043762207,
+                    "n_mallocs": 1,
+                    "n_peak_mb": 7.409337043762207,
+                    "n_python_fraction": 0.17370335346165197,
+                    "n_sys_percent": 0.032102383985472153,
+                    "n_usage_fraction": 0.015101924025295026
+                },
+                {
+                    "line": "BeamlineModel.forward",
+                    "lineno": 26,
+                    "memory_samples": [
+                        [
+                            598987042,
+                            82.31717436316899
+                        ],
+                        [
+                            620349917,
+                            120.29706398827749
+                        ],
+                        [
+                            638749250,
+                            158.32568449568546
+                        ],
+                        [
+                            659175083,
+                            196.23964850830376
+                        ],
+                        [
+                            674879292,
+                            234.2011420603619
+                        ],
+                        [
+                            691197625,
+                            272.1752931900629
+                        ],
+                        [
+                            712353250,
+                            310.0996178196222
+                        ],
+                        [
+                            728893417,
+                            348.0817377369167
+                        ]
+                    ],
+                    "n_avg_mb": 283.8368101119995,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 14.099186192573336,
+                    "n_cpu_percent_python": 13.431527353699837,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 283.8368101119995,
+                    "n_malloc_mb": 361.8186902999878,
+                    "n_mallocs": 1,
+                    "n_peak_mb": 283.8368101119995,
+                    "n_python_fraction": 0.0059712132121930795,
+                    "n_sys_percent": 2.1893823932148724,
+                    "n_usage_fraction": 0.7374692687846272
+                }
+            ],
+            "leaks": {},
+            "lines": [
+                {
+                    "line": "import torch\n",
+                    "lineno": 7,
+                    "memory_samples": [
+                        [
+                            207804917,
+                            37.27370693570746
+                        ],
+                        [
+                            546678958,
+                            74.61224183951565
+                        ]
+                    ],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 60.16241922182357,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 74.19534111022949,
+                    "n_malloc_mb": 74.19534111022949,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 74.19534111022949,
+                    "n_python_fraction": 0.46630674999305277,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.15122707981287714
+                },
+                {
+                    "line": "from bmadx import Particle, Drift, Quadrupole, track_lattice, M_ELECTRON\n",
+                    "lineno": 9,
+                    "memory_samples": [
+                        [
+                            585868417,
+                            77.75937545219223
+                        ]
+                    ],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 1.4784440994262695,
+                    "n_malloc_mb": 1.4784440994262695,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 1.4784440994262695,
+                    "n_python_fraction": 0.7522789999999999,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.003013407317457404
+                },
+                {
+                    "line": "    coords = dist.sample(torch.Size([n_particles])) # particles' coordinates\n",
+                    "lineno": 14,
+                    "memory_samples": [
+                        [
+                            589452417,
+                            80.63873230445469
+                        ]
+                    ],
+                    "n_avg_mb": 7.409337043762207,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.3410517164235192,
+                    "n_cpu_percent_python": 1.1833855531697162,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 7.409337043762207,
+                    "n_malloc_mb": 7.409337043762207,
+                    "n_mallocs": 1,
+                    "n_peak_mb": 7.409337043762207,
+                    "n_python_fraction": 0.17370335346165197,
+                    "n_sys_percent": 0.032102383985472153,
+                    "n_usage_fraction": 0.015101924025295026
+                },
+                {
+                    "line": "        beam_out = track_lattice(self.beam_in, lattice)\n",
+                    "lineno": 35,
+                    "memory_samples": [
+                        [
+                            598987042,
+                            82.29677326227633
+                        ],
+                        [
+                            620349917,
+                            120.28284545040452
+                        ],
+                        [
+                            638749250,
+                            158.29704173707984
+                        ],
+                        [
+                            659175083,
+                            196.23806976456802
+                        ],
+                        [
+                            674879292,
+                            234.19945176713713
+                        ],
+                        [
+                            691197625,
+                            272.16563749069525
+                        ],
+                        [
+                            712353250,
+                            310.0872055292061
+                        ],
+                        [
+                            728893417,
+                            348.07031191917497
+                        ]
+                    ],
+                    "n_avg_mb": 283.8368101119995,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 14.099186192573336,
+                    "n_cpu_percent_python": 13.431527353699837,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 283.8368101119995,
+                    "n_malloc_mb": 361.8186902999878,
+                    "n_mallocs": 1,
+                    "n_peak_mb": 283.8368101119995,
+                    "n_python_fraction": 0.0059712132121930795,
+                    "n_sys_percent": 2.1893823932148724,
+                    "n_usage_fraction": 0.7374692687846272
+                },
+                {
+                    "line": "loss = model()\n",
+                    "lineno": 58,
+                    "memory_samples": [
+                        [
+                            739864417,
+                            361.3226947228042
+                        ],
+                        [
+                            739890417,
+                            323.79243290411836
+                        ],
+                        [
+                            739914708,
+                            286.25871875208094
+                        ],
+                        [
+                            739939125,
+                            248.73705679564833
+                        ]
+                    ],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0
+                },
+                {
+                    "line": "loss.backward()\n",
+                    "lineno": 59,
+                    "memory_samples": [
+                        [
+                            848727625,
+                            237.19405256971586
+                        ],
+                        [
+                            848780833,
+                            199.71211671205026
+                        ],
+                        [
+                            848831208,
+                            162.93183839392006
+                        ],
+                        [
+                            848884458,
+                            125.28378102097126
+                        ],
+                        [
+                            848937333,
+                            88.76882910919947
+                        ]
+                    ],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 15.524924802469279,
+                    "n_cpu_percent_python": 0.906792642968412,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 1.62677001953125,
+                    "n_malloc_mb": 45.720245361328125,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 1.62677001953125,
+                    "n_python_fraction": 0.00010644194782803717,
+                    "n_sys_percent": 5.463631181020571,
+                    "n_usage_fraction": 0.09318832005974328
+                }
+            ],
+            "percent_cpu_time": 53.171984219525015
+        }
+    },
+    "gpu": false,
+    "growth_rate": 17.08147803892828,
+    "max_footprint_fname": "./torch_module_profiling.py",
+    "max_footprint_lineno": 35,
+    "max_footprint_mb": 364.55987071990967,
+    "memory": true,
+    "program": "./torch_module_profiling.py",
+    "samples": [
+        [
+            207723833,
+            37.29910072492264
+        ],
+        [
+            546672750,
+            74.61620551021943
+        ],
+        [
+            617468667,
+            112.17920226242205
+        ],
+        [
+            636369792,
+            150.11333012643155
+        ],
+        [
+            652701833,
+            187.98760772018574
+        ],
+        [
+            672070875,
+            225.93394707014747
+        ],
+        [
+            688157917,
+            264.01138338775
+        ],
+        [
+            706445167,
+            301.8715209441375
+        ],
+        [
+            725425750,
+            339.78599559862346
+        ],
+        [
+            739824542,
+            302.5726078471716
+        ],
+        [
+            739838958,
+            265.02935596635405
+        ],
+        [
+            848629667,
+            227.3731067792338
+        ],
+        [
+            848652208,
+            190.85293071644892
+        ],
+        [
+            848674625,
+            152.9879431733731
+        ],
+        [
+            848700042,
+            116.20906275948127
+        ]
+    ]
+}
