@@ -1,0 +1,14 @@
+parameter[lattice] = test_quad
+
+beginning[beta_a] = 10
+beginning[beta_b] = 10
+
+beginning[p0c] = 4.0e7
+parameter[particle] = electron
+parameter[geometry] = open
+
+b1: sbend, L = 0.1, G = 0.5, fringe_at = exit_end, fringe_type = hard_edge_only, E2 = 0.02, FINTX = 0, HGAPX = 0.03 
+
+lat: line = (b1)
+
+use, lat
