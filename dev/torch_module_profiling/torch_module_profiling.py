@@ -3,6 +3,8 @@
 import sys
 #print(sys.argv)
 n_particles = int(sys.argv[1])
+n_quadrupoles = int(sys.argv[2])
+n_slices = int(sys.argv[3])
 
 import torch
 
@@ -29,7 +31,9 @@ class BeamlineModel(torch.nn.Module):
         half_drift = Drift( L = self.l_d/2)
         for k in self.k_set:
             lattice.append( half_drift )
-            lattice.append( Quadrupole(L = self.l_q, K1 = k) )
+            lattice.append( Quadrupole(L = self.l_q,
+                                       K1 = k,
+                                       NUM_STEPS = n_slices) )
             lattice.append( half_drift )
             
         beam_out = track_lattice(self.beam_in, lattice)
@@ -52,7 +56,7 @@ beam_in = create_gaussian_beam(n_particles,
                                mc2 = torch.tensor(M_ELECTRON))
 
 # model evaluation and backward pass
-k_set = torch.zeros(10, requires_grad=True)
+k_set = torch.zeros(n_quadrupoles, requires_grad=True)
 #scalene_profiler.start()
 model = BeamlineModel(k_set, l_d, l_q, beam_in, sigma_t)
 loss = model()
