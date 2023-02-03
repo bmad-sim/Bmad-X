@@ -19,7 +19,7 @@ def test_lattice():
 
     test_beam = Beam(
         torch.ones(6, 6),
-        p0c=10.0e6,
+        p0c=torch.tensor(10.0e6),
     )
     print(lattice(test_beam))
 
