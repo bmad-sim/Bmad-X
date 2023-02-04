@@ -1,7 +1,7 @@
 import torch
 from torch.autograd.functional import jacobian
 
-from bmadx.track import Particle
+from bmadx import Particle
 
 
 def get_transport_matrix(lattice, s, p0c, mc2):
