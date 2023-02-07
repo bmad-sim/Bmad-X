@@ -1,4 +1,4 @@
-parameter[lattice] = test_crab_cavity_offset
+parameter[lattice] = test_rf_cavity
 
 beginning[beta_a] = 10
 beginning[beta_b] = 10
@@ -7,7 +7,7 @@ beginning[p0c] = 4.0e7
 parameter[particle] = electron
 parameter[geometry] = open
 
-cav: crab_cavity, L = 0.2, VOLTAGE = 1.0e4, PHI0 = 0.5, RF_FREQUENCY = 1.0e9, X_OFFSET = 1e-3, Y_OFFSET = -2e-3
+cav: rfcav, L = 0.2, VOLTAGE = 1.0e4, PHI0 = 0.5, RF_FREQUENCY = 1.0e9, NUM_STEPS=1
 
 lat: line = (cav)
 

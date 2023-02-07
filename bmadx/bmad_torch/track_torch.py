@@ -2,7 +2,8 @@ import torch
 from torch import Tensor
 from torch.nn import Module, ModuleList, Parameter
 
-from bmadx import track
+from bmadx import Particle
+from bmadx import LIB_DICT
 
 
 class Beam(torch.nn.Module):
@@ -43,7 +44,7 @@ class Beam(torch.nn.Module):
         beams = []
         for i in range(len(getattr(self, self.keys[0]))):
             beams += [
-                track.Particle(
+                Particle(
                     *[getattr(self, key)[i] for key in self.keys], **self._defaults
                 )
             ]
@@ -54,7 +55,7 @@ class Beam(torch.nn.Module):
 class TorchElement(Module):
     def __init__(self, tracking_function):
         super(TorchElement, self).__init__()
-        self.track = tracking_function(torch)
+        self.track = tracking_function
 
     def forward(self, X):
         return self.track(X, self)
@@ -75,7 +76,9 @@ class TorchQuadrupole(TorchElement):
         Y_OFFSET: Tensor = torch.tensor(0.0),
         TILT: Tensor = torch.tensor(0.0),
     ):
-        super(TorchQuadrupole, self).__init__(track.make_track_a_quadrupole)
+        super(TorchQuadrupole, self).__init__(
+            LIB_DICT[torch]['tracking_routine']['Quadrupole']
+        )
         self.register_parameter("L", Parameter(L, requires_grad=False))
         self.register_parameter("X_OFFSET", Parameter(X_OFFSET, requires_grad=False))
         self.register_parameter("Y_OFFSET", Parameter(Y_OFFSET, requires_grad=False))
@@ -97,7 +100,9 @@ class TorchCrabCavity(TorchElement):
         Y_OFFSET: Tensor = torch.tensor(0.0),
         TILT: Tensor = torch.tensor(0.0),
     ):
-        super(TorchCrabCavity, self).__init__(track.make_track_a_crab_cavity)
+        super(TorchCrabCavity, self).__init__(
+            LIB_DICT[torch]['tracking_routine']['CrabCavity']
+        )
         self.register_parameter("L", Parameter(L, requires_grad=False))
         self.register_parameter("X_OFFSET", Parameter(X_OFFSET, requires_grad=False))
         self.register_parameter("Y_OFFSET", Parameter(Y_OFFSET, requires_grad=False))
@@ -114,7 +119,9 @@ class TorchDrift(TorchElement):
         self,
         L: Tensor,
     ):
-        super(TorchDrift, self).__init__(track.make_track_a_drift)
+        super(TorchDrift, self).__init__(
+            LIB_DICT[torch]['tracking_routine']['Drift']
+        )
         self.register_parameter("L", Parameter(L, requires_grad=False))
 
 
