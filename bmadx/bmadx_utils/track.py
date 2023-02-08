@@ -10,7 +10,7 @@ def track_element(p_in, ele):
     lib = sys.modules[type(p_in.x).__module__]
     params = [*ele]
     for i, param in enumerate(params):
-        if sys.modules[type(param).__module__] != lib and type(param) != int:
+        if sys.modules[type(param).__module__] != lib and type(param) != int and type(param) != str:
             params[i] = LIB_DICT[lib]['construct_type'](param, dtype = p_in.x.dtype)
             
     lib_ele = ele._make(params)

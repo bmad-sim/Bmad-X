@@ -13,7 +13,8 @@ Quadrupole = namedtuple('Quadrupole',
                             'Y_OFFSET',
                             'TILT'
                         ],
-                        defaults=(None, None, 1, 0.0, 0.0, 0.0))
+                        defaults=(None, None, 1, 0.0, 0.0, 0.0)
+                       )
 
 CrabCavity = namedtuple('CrabCavity', 
                         [
@@ -25,7 +26,8 @@ CrabCavity = namedtuple('CrabCavity',
                             'Y_OFFSET',
                             'TILT'
                         ],
-                        defaults=(None, None, 1, 0.0, 0.0, 0.0))
+                        defaults=(None, None, 1, 0.0, 0.0, 0.0)
+                       )
 
 RFCavity = namedtuple('RFCavity', 
                       [
@@ -37,4 +39,35 @@ RFCavity = namedtuple('RFCavity',
                           'Y_OFFSET',
                           'TILT'
                       ],
-                      defaults=(None, None, 1, 0.0, 0.0, 0.0))
+                      defaults=(None, None, 1, 0.0, 0.0, 0.0)
+                     )
+
+SBend = namedtuple('SBend', 
+                   [
+                       'L',
+                       'P0C',
+                       'G',
+                       'DG',
+                       'E1',
+                       'E2',
+                       'F_INT',
+                       'H_GAP',
+                       'F_INT_X',
+                       'H_GAP_X',
+                       'FRINGE_AT',
+                       'FRINGE_TYPE'
+                   ],
+                   defaults=(None,
+                             None, 
+                             None, 
+                             0.0, 
+                             0.0, 
+                             0.0, 
+                             0.0, 
+                             0.0, 
+                             0.0, 
+                             0.0, 
+                             "both_ends", 
+                             "none"
+                            )
+                  )
