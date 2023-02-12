@@ -35,11 +35,11 @@ class BeamlineModel(torch.nn.Module):
                                        K1 = k,
                                        NUM_STEPS = n_slices) )
             lattice.append( half_drift )
-            
-        beam_out = track_lattice(self.beam_in, lattice)
-        dx = beam_out.x.std() - self.sigma_t
-        dy = beam_out.y.std() - self.sigma_t
-        delta = torch.sqrt( dx**2 + dy**2 )
+        with torch.no_grad():    
+            beam_out = track_lattice(self.beam_in, lattice)
+            dx = beam_out.x.std() - self.sigma_t
+            dy = beam_out.y.std() - self.sigma_t
+            delta = torch.sqrt( dx**2 + dy**2 )
         
         return delta
 
@@ -61,5 +61,5 @@ k_set = torch.zeros(n_quadrupoles, requires_grad=True)
 #scalene_profiler.start()
 model = BeamlineModel(k_set, l_d, l_q, beam_in, sigma_t)
 loss = model()
-loss.backward()
+#loss.backward()
 #scalene_profiler.stop()
