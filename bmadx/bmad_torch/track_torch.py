@@ -104,8 +104,8 @@ class TorchCrabCavity(TorchElement):
         self,
         L: Tensor,
         VOLTAGE: Tensor,
-        PHI0: Tensor = torch.tensor(0.0),
         RF_FREQUENCY: Tensor,
+        PHI0: Tensor = torch.tensor(0.0),
         X_OFFSET: Tensor = torch.tensor(0.0),
         Y_OFFSET: Tensor = torch.tensor(0.0),
         TILT: Tensor = torch.tensor(0.0)
@@ -129,13 +129,13 @@ class TorchRFCavity(TorchElement):
         self,
         L: Tensor,
         VOLTAGE: Tensor,
-        PHI0: Tensor = torch.tensor(0.0),
         RF_FREQUENCY: Tensor,
+        PHI0: Tensor = torch.tensor(0.0),
         X_OFFSET: Tensor = torch.tensor(0.0),
         Y_OFFSET: Tensor = torch.tensor(0.0),
         TILT: Tensor = torch.tensor(0.0)
     ):
-        super(TorchCrabCavity, self).__init__(
+        super(TorchRFCavity, self).__init__(
             LIB_DICT[torch]['tracking_routine']['RFCavity']
         )
         self.register_parameter("L", Parameter(L, requires_grad=False))
@@ -176,14 +176,14 @@ class TorchSBend(TorchElement):
             "none": 0,
             "soft_edge_only": 1,
             "hard_edge_only": 2,
-            "full": 3
+            "full": 3,
             "linear_edge": 4,
             "basic_bend": 5
         }
         inv_fringe_at_dic = dict(map(reversed, fringe_at_dic.items()))
         inv_fringe_type_dic = dict(map(reversed, fringe_type_dic.items()))
         
-        super(TorchCrabCavity, self).__init__(
+        super(TorchSBend, self).__init__(
             LIB_DICT[torch]['tracking_routine']['SBend']
         )
         self.register_parameter("L", Parameter(L, requires_grad=False))
@@ -196,8 +196,10 @@ class TorchSBend(TorchElement):
         self.register_parameter("H_GAP", Parameter(H_GAP_X, requires_grad=False))
         self.register_parameter("F_INT_X", Parameter(F_INT_X, requires_grad=False))
         self.register_parameter("H_GAP_X", Parameter(H_GAP_X, requires_grad=False))
-        self.register_buffer("FRINGE_AT", torch.tensor(self.fringe_at_dic[FRINGE_AT]))
-        self.register_buffer("FRINGE_TYPE", torch.tensor(self.fringe_type_dic[FRINGE_TYPE]))
+        self.FRINGE_AT = FRINGE_AT
+        self.FRINGE_TYPE = FRINGE_TYPE
+        #self.register_buffer("FRINGE_AT", torch.tensor(fringe_at_dic[FRINGE_AT]))
+        #self.register_buffer("FRINGE_TYPE", torch.tensor(fringe_type_dic[FRINGE_TYPE]))
         
         
 
