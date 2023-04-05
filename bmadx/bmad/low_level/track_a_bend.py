@@ -75,7 +75,8 @@ def make_track_a_sbend_parts(lib):
     arctan2 = lib.arctan2
 
     def sinc_bmad(x):
-        return sinc(x /PI)
+        print(x)
+        return sinc(x / PI)
     
     def cosc(x):
         if x == 0:
