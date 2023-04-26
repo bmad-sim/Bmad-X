@@ -192,6 +192,8 @@ class TorchSBend(TorchElement):
         self.register_parameter("DG", Parameter(DG, requires_grad=False))
         self.register_parameter("E1", Parameter(E1, requires_grad=False))
         self.register_parameter("E2", Parameter(E2, requires_grad=False))
+        self.register_parameter("E1", Parameter(F_INT, requires_grad=False))
+        self.register_parameter("E2", Parameter(H_GAP, requires_grad=False))
         self.register_parameter("F_INT", Parameter(F_INT_X, requires_grad=False))
         self.register_parameter("H_GAP", Parameter(H_GAP_X, requires_grad=False))
         self.register_parameter("F_INT_X", Parameter(F_INT_X, requires_grad=False))
