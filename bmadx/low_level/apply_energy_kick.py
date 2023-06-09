@@ -1,5 +1,5 @@
-from bmadx.bmad.modules import Particle
-from bmadx.sim_utils.special_functions.sqrt_one import make_sqrt_one
+from bmadx.structures import Particle
+from bmadx.low_level.sqrt_one import make_sqrt_one
 
 def make_apply_energy_kick(lib):
     """Makes function given library lib."""
