@@ -1,5 +1,5 @@
-from bmadx.bmad.modules import Particle
-from bmadx.sim_utils.interfaces.constants import PI
+from bmadx.structures import Particle
+from bmadx.constants import PI
 
 #fringe_at = both_ends (default), no_end, entrance_end, exit_end 
 #fringe_type = none (default), hard_edge_only, soft_edge_only, full

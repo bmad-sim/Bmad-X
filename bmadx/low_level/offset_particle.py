@@ -1,4 +1,4 @@
-from bmadx.bmad.modules import Particle
+from bmadx.structures import Particle
 
 def make_offset_particle(lib, f):
     """Makes function f given library lib.

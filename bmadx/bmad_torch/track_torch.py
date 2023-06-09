@@ -2,7 +2,7 @@ import torch
 from torch import Tensor
 from torch.nn import Module, ModuleList, Parameter
 
-from bmadx import Particle
+from bmadx.structures import Particle
 from bmadx import LIB_DICT
 
 
