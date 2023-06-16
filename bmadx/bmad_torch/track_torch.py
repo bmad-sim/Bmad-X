@@ -3,11 +3,12 @@ from torch import Tensor
 from torch.nn import Module, ModuleList, Parameter
 
 from bmadx.structures import Particle
+from bmadx.constants import M_ELECTRON
 from bmadx import LIB_DICT
 
 
 class Beam(torch.nn.Module):
-    def __init__(self, data, p0c, s=torch.tensor(0.0), mc2=torch.tensor(0.511e6)):
+    def __init__(self, data, p0c, s=torch.tensor(0.0), mc2=torch.tensor(M_ELECTRON)):
         super(Beam, self).__init__()
         self.keys = ["x", "px", "y", "py", "z", "pz"]
 
