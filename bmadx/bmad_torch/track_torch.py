@@ -19,27 +19,27 @@ class Beam(torch.nn.Module):
 
     @property
     def x(self):
-        return self.data[0]
+        return self.data[:,0]
 
     @property
     def px(self):
-        return self.data[1]
+        return self.data[:,1]
 
     @property
     def y(self):
-        return self.data[2]
+        return self.data[:,2]
 
     @property
     def py(self):
-        return self.data[3]
+        return self.data[:,3]
 
     @property
     def z(self):
-        return self.data[4]
+        return self.data[:,4]
 
     @property
     def pz(self):
-        return self.data[5]
+        return self.data[:,5]
 
     def to_list_of_beams(self):
         beams = []
