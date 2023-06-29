@@ -1,6 +1,6 @@
 from bmadx.constants import C_LIGHT
 
-def openPMD_to_bmadx(pmd_par, p0c):
+def openpmd_to_bmadx(pmd_par, p0c):
     """
     Transforms openPMD-beamphysics ParticleGroup to 
     bmad phase-space coordinates.
