@@ -11,7 +11,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        python-version: [3.9]
+        python-version: [3.10]
     steps:
       - uses: actions/checkout@v3
       - uses: conda-incubator/setup-miniconda@v2
@@ -19,7 +19,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
           mamba-version: "*"
           channels: conda-forge
-          activate-environment: bmadx-dev
+          activate-environment: bmadx
           environment-file: environment.yml
           
       #- name: flake8
