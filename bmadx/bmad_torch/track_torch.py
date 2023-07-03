@@ -51,6 +51,9 @@ class Beam(torch.nn.Module):
             ]
 
         return beams
+    
+    def detach(self):
+        return Beam(self.data.detach().clone(), self.p0c, self.s, self.mc2)
 
 
 class TorchElement(Module):
@@ -58,8 +61,10 @@ class TorchElement(Module):
         super(TorchElement, self).__init__()
         self.track = tracking_function
 
-    def forward(self, X):
-        return self.track(X, self)
+    def forward(self, beam):
+        #par = self.track(beam, self)
+        #return par_to_beam(par)
+        return self.track(beam, self)
 
     @property
     def batch_shape(self):
@@ -238,3 +243,13 @@ class TorchLattice(Module):
             *[torch.ones(ele.batch_shape) for ele in self.elements]
         )
         return out[0].shape
+
+def par_to_beam(par):
+    '''Returns Beam corresponding to Particle'''
+    coords = torch.vstack(par[:6]).T
+    return Beam(
+        coords,
+        par.p0c,
+        par.s,
+        par.mc2
+    )
