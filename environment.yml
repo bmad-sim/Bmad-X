@@ -1,6 +1,8 @@
 name: bmadx
 channels:
   - conda-forge
+  - pytorch
+  - nvidia
   - defaults
 dependencies:
   - python=3.10
