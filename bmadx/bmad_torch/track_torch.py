@@ -54,6 +54,9 @@ class Beam(torch.nn.Module):
     
     def detach(self):
         return Beam(self.data.detach().clone(), self.p0c, self.s, self.mc2)
+    
+    def numpy_particles(self):
+        return Particle(*self.data.detach().clone().numpy().T, self.p0c, self.s, self.mc2)
 
 
 class TorchElement(Module):
