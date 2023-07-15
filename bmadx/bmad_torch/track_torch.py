@@ -1,4 +1,5 @@
 import torch
+import copy
 from torch import Tensor
 from torch.nn import Module, ModuleList, Parameter
 
@@ -52,11 +53,14 @@ class Beam(torch.nn.Module):
 
         return beams
     
-    def detach(self):
+    def detach_clone(self):
         return Beam(self.data.detach().clone(), self.p0c, self.s, self.mc2)
     
     def numpy_particles(self):
-        return Particle(*self.data.detach().clone().numpy().T, self.p0c, self.s, self.mc2)
+        return Particle(*self.data.detach().clone().numpy().T,
+                        p0c = self.p0c.detach().clone().numpy(),
+                        s = self.s.detach().clone().numpy(),
+                        mc2 = self.mc2.detach().clone().numpy())
 
 
 class TorchElement(Module):
@@ -235,6 +239,9 @@ class TorchLattice(Module):
                 all_p[i + 1] = self.elements[i](all_p[i])
 
             return all_p
+    
+    def copy(self):
+        return copy.deepcopy(self)
 
     @property
     def n_elements(self):
