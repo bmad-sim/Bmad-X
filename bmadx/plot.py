@@ -87,7 +87,7 @@ def plot_projections(
         if custom_lims is None:
             coord_min = all_coords.min(axis=1)
             coord_max = all_coords.max(axis=1)
-        elif custom_lims.shape() == (n_coords, 2):
+        elif custom_lims.shape == (n_coords, 2):
             coord_min = custom_lims[:,0]
             coord_max = custom_lims[:,1]
         else:

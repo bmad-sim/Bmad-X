@@ -78,12 +78,11 @@ def bmadx_to_openpmd(par):
     dat['status'] = np.ones_like(x, dtype=int)
     dat['weight'] = - np.ones_like(x, dtype=int) * E_CHARGE
 
-    if np.isclose(par.mc2,M_ELECTRON):
+    if np.isclose(par.mc2, M_ELECTRON):
         dat['species'] = 'electron'
     else:
         raise ValueError('only electrons are supported as of now')
-
-
+    
     return ParticleGroup(data=dat)
 
 def save_as_h5(par, fname: str):
