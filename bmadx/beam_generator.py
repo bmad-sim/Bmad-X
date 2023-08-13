@@ -11,7 +11,7 @@ from bmadx.constants import M_ELECTRON
 from bmadx.coordinates import openpmd_to_bmadx
 from bmadx.bmad_torch.track_torch import Beam
 
-def create_pmd_particlegroup(base_yaml, transforms_yaml):
+def create_pmd_particlegroup(base_yaml, transforms_yaml, n_particle):
     '''Creates openPMD ParticleGroup from dist and transform yaml files
     using distgen
 
@@ -30,15 +30,19 @@ def create_pmd_particlegroup(base_yaml, transforms_yaml):
 
     if distgen.__version__ >= '1.0.0':
         gen["transforms"] = transforms_dict
+        if n_particle is not None:
+            gen['n_particle'] = n_particle
     else:
         gen.input["transforms"] = transforms_dict
+        if n_particle is not None:
+            gen.input['n_particle'] = n_particle
 
     particle_group = gen.run()
     particle_group.drift_to_z(z=0)
 
     return particle_group
 
-def create_beam(base_yaml, transforms_yaml, p0c, save_as=None):
+def create_beam(base_yaml, transforms_yaml, p0c, n_particle=None, save_as=None):
     '''Creates bmadx torch Beam from dist and transform yaml files
     using distgen
 
@@ -53,7 +57,7 @@ def create_beam(base_yaml, transforms_yaml, p0c, save_as=None):
     '''
 
     # Generate openPMD particle group:
-    particle_group = create_pmd_particlegroup(base_yaml, transforms_yaml)
+    particle_group = create_pmd_particlegroup(base_yaml, transforms_yaml, n_particle)
 
     # Transform to Bmad phase space coordinates:
     coords = np.array(openpmd_to_bmadx(particle_group, p0c)).T

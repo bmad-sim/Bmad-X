@@ -32,8 +32,8 @@ def plot_projections(
         Default: 50
     
     scale: float
-        scale factor for coordinates. 1e3 for milimeters and miliradians,
-        and 1 for meters and radians.
+        scale factor for coordinates (except pz, which is always in %).
+        1e3 for milimeters and miliradians, and 1 for meters and radians. 
         Default: 1e3
 
     background: bool
@@ -70,7 +70,7 @@ def plot_projections(
     all_coords = []
     
     for coord in coords:
-        all_coords.append(getattr(particles, coord)*scale)
+        all_coords.append(getattr(particles, coord))
     
     all_coords = np.array(all_coords)
     
@@ -87,7 +87,7 @@ def plot_projections(
         if custom_lims is None:
             coord_min = all_coords.min(axis=1)
             coord_max = all_coords.max(axis=1)
-        elif custom_lims.shape() == (n_coords, 2):
+        elif custom_lims.shape == (n_coords, 2):
             coord_min = custom_lims[:,0]
             coord_max = custom_lims[:,1]
         else:
@@ -110,16 +110,25 @@ def plot_projections(
             coords should be a subset of ('x', 'px', 'y', 'py', 'z', 'pz')
             """)
 
-        ax[n_coords-1,i].set_xlabel(f'{x_coord} ({x_coord_unit})')
+        if x_coord=='pz':
+            x_array = getattr(particles, x_coord)*100
+            ax[n_coords-1,i].set_xlabel(f'{x_coord} (%)')
+            min_x = coord_min[i]*100
+            max_x = coord_max[i]*100
+            if i>0:
+                ax[i,0].set_ylabel(f'{x_coord} (%)')
 
-        if i>0:
-            ax[i,0].set_ylabel(f'{x_coord} ({x_coord_unit})')
-
-        x_array = getattr(particles, x_coord)*scale
+        else:
+            x_array = getattr(particles, x_coord)*scale
+            ax[n_coords-1,i].set_xlabel(f'{x_coord} ({x_coord_unit})')
+            min_x = coord_min[i]*scale
+            max_x = coord_max[i]*scale
+            if i>0:
+                ax[i,0].set_ylabel(f'{x_coord} ({x_coord_unit})')
 
         ax[i,i].hist(x_array,
                      bins=bins,
-                     range=([coord_min[i], coord_max[i]]))
+                     range=([min_x, max_x]))
         
         ax[i,i].yaxis.set_tick_params(left=False, labelleft=False)
 
@@ -129,13 +138,22 @@ def plot_projections(
         for j in range(i+1, n_coords):
 
             y_coord = coords[j]
-            y_array = getattr(particles, y_coord)*scale
+
+            if y_coord=='pz':
+                y_array = getattr(particles, y_coord)*100
+                min_y = coord_min[j]*100
+                max_y = coord_max[j]*100
+
+            else:
+                y_array = getattr(particles, y_coord)*scale
+                min_y = coord_min[j]*scale
+                max_y = coord_max[j]*scale
             
             ax[j,i].hist2d(x_array,
                            y_array,
                            bins = bins,
-                           range=[[coord_min[i], coord_max[i]],
-                                  [coord_min[j], coord_max[j]]],
+                           range=[[min_x, max_x],
+                                  [min_y, max_y]],
                            cmap = mycmap,
                            vmin = not background)
             
