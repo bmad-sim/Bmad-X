@@ -1,5 +1,6 @@
 import torch
 import copy
+import sys
 from torch import Tensor
 from torch.nn import Module, ModuleList, Parameter
 
@@ -254,12 +255,30 @@ class TorchLattice(Module):
         )
         return out[0].shape
 
-def par_to_beam(par):
-    '''Returns Beam corresponding to Particle'''
-    coords = torch.vstack(par[:6]).T
+def par_to_beam(par: Particle):
+    '''
+    Returns Beam corresponding to Particle. 
+    '''
+
+    if type(par.x) != torch.Tensor:
+        n_par = len(par.x)
+        coords = torch.zeros((n_par, 6))
+        for i in range(6):
+            coords[:,i] = torch.tensor(par[i])
+    else:
+        coords = torch.vstack(par[:6]).T
+
+    params = [0,0,0]
+    for i in (0, 1, 2):
+        if type(par[6+i]) != torch.Tensor:
+            params[i] = torch.tensor(par[6+i])
+        else:
+            params[i] = par[6+i]
+
+
     return Beam(
         coords,
-        par.p0c,
-        par.s,
-        par.mc2
+        p0c = params[0],
+        s = params[1],
+        mc2 = params[2]
     )
