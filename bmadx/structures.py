@@ -11,7 +11,7 @@ Particle = namedtuple(
         None,
         None,
         None,
-        None,
+        0.0,
         None,
         M_ELECTRON
     )

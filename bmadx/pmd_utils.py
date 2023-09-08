@@ -56,8 +56,8 @@ def openpmd_to_bmadx_particles(
     coords = openpmd_to_bmadx_coords(pmd_par, p0c)
     par = Particle(
         *coords, 
-        p0c = p0c,
         s = s,
+        p0c = p0c,
         mc2 = mc2)
     return par
 
@@ -256,6 +256,7 @@ def opal_data_to_bmadx_particle(
         py = py,
         z = z,
         pz = pz,
+        s = 0.0,
         p0c = p0c,
         mc2 = mc2
     )
