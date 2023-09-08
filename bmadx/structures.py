@@ -3,7 +3,7 @@ from bmadx.constants import M_ELECTRON
 
 Particle = namedtuple(
     'Particle', 
-    'x px y py z pz p0c s mc2',
+    'x px y py z pz s p0c mc2',
     defaults = (
         None,
         None,
@@ -12,7 +12,7 @@ Particle = namedtuple(
         None,
         None,
         None,
-        0.0,
+        None,
         M_ELECTRON
     )
 )
