@@ -199,3 +199,64 @@ def save_beam_as_h5(beam: Beam, fname: str):
     """
     pmd_par = bmadx_beam_to_openpmd(beam)
     pmd_par.write(fname)
+
+def opal_data_to_bmadx_particle(
+        opal_data_file: str, 
+        p0c: float = None,
+        mc2: float = M_ELECTRON
+):
+    """
+    Transforms OPAL particle coordinates in a data file to
+    Bmad-X Particle beam.
+
+    Parameters
+    ----------
+    opal_data_file (str): OPAL data file with particle coordinates
+    p0c (float): design momentum times c in eV as defined in Bmad coords
+    mc2 (float): particle rest mass energy in eV
+    
+    Returns
+    -------
+    par (bmadx.Particle): Bmad-X Particle beam
+    """
+
+    data = np.genfromtxt(opal_data_file, skip_header=1)
+
+    pc = mc2 * np.sqrt(data[:,1]**2 + data[:,3]**2 + data[:,5]**2)
+
+    # if not provided, reference momentum is avg p
+    if p0c is None:
+        p0c = pc.mean()
+
+    # initial transforms
+    x = data[:,0]
+    y = data[:,2]
+    px = mc2 * data[:,1] / p0c 
+    py = mc2 * data[:,3] / p0c
+    pz = pc / p0c - 1.0
+
+    # drift to z_avg (so that s value is the same)
+    z0 = data[:,4].mean()
+    dt = (z0 - data[:,4]) / data[:,5]
+    x = x + data[:,1] * dt
+    y = y + data[:,3] * dt
+
+    # transform z coord
+    beta = np.sqrt( 
+        (pc / mc2)**2 / 
+        ( 1 + (pc / mc2)**2 )
+    )
+    z = - beta * C_LIGHT * dt
+
+    # return bmadx particle
+    par = Particle(
+        x = x,
+        px = px,
+        y = y,
+        py = py,
+        z = z,
+        pz = pz,
+        p0c = p0c,
+        mc2 = mc2
+    )
+    return par
