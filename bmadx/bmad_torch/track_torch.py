@@ -111,6 +111,27 @@ class TorchQuadrupole(TorchElement):
         self.register_parameter("TILT", Parameter(TILT, requires_grad=False))
         self.register_parameter("K1", Parameter(K1, requires_grad=False))
 
+class TorchSextupole(TorchElement):
+    def __init__(
+        self,
+        L: Tensor,
+        K2: Tensor,
+        NUM_STEPS: int = 1,
+        X_OFFSET: Tensor = torch.tensor(0.0),
+        Y_OFFSET: Tensor = torch.tensor(0.0),
+        TILT: Tensor = torch.tensor(0.0),
+    ):
+        super(TorchSextupole, self).__init__(
+            LIB_DICT[torch]['tracking_routine']['Quadrupole']
+        )
+        self.register_parameter("L", Parameter(L, requires_grad=False))
+        self.register_parameter("X_OFFSET", Parameter(X_OFFSET, requires_grad=False))
+        self.register_parameter("Y_OFFSET", Parameter(Y_OFFSET, requires_grad=False))
+        self.register_parameter(
+            "NUM_STEPS", Parameter(torch.tensor(NUM_STEPS), requires_grad=False)
+        )
+        self.register_parameter("TILT", Parameter(TILT, requires_grad=False))
+        self.register_parameter("K2", Parameter(K2, requires_grad=False))
 
 class TorchCrabCavity(TorchElement):
     def __init__(
