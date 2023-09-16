@@ -7,3 +7,4 @@ misc
 **/__pycache__
 *.pyc
 .idea/
+**/*.html

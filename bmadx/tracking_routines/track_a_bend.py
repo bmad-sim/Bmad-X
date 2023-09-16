@@ -1,5 +1,5 @@
-from bmadx.bmad.modules import Particle
-from bmadx.sim_utils.interfaces.constants import PI
+from bmadx.structures import Particle
+from bmadx.constants import PI
 
 #fringe_at = both_ends (default), no_end, entrance_end, exit_end 
 #fringe_type = none (default), hard_edge_only, soft_edge_only, full
@@ -67,21 +67,24 @@ def make_track_a_sbend_parts(lib):
     sin = lib.sin
     cos = lib.cos
     tan = lib.tan
-    sinh = lib.sinh
-    cosh = lib.cosh
     sinc = lib.sinc
     absolute = lib.abs
     arcsin = lib.arcsin
     arctan2 = lib.arctan2
 
     def sinc_bmad(x):
-        return sinc(x /PI)
+        return sinc(x/PI)
     
     def cosc(x):
-        if x == 0:
-            return -0.5
-        else:
-            return (cos(x) - 1) / x**2
+        # FIX to make it branchless: (cos(x)-1)/x**2 = -1/2 [sinc(x/2)]**2
+        return -sinc(x/PI/2)**2/2
+        #if x == 0:
+        #    return -0.5
+        #else:
+        #    return (cos(x) - 1) / x**2
+        #eps = 2.220446049250313e-16
+        #x = x + eps
+        #return (cos(x) - 1) / x**2
     
     def track_body(p_in, bend):
         """Tracks the incoming Particle p_in though a sbend (k1=0) element

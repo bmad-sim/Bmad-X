@@ -1,173 +1,26 @@
 {
-    "alloc_samples": 75,
-    "elapsed_time_sec": 0.6522469520568848,
+    "alloc_samples": 2507,
+    "elapsed_time_sec": 19.002902507781982,
     "files": {
-        "./torch_module_profiling_no_grad.py": {
-            "functions": [
-                {
-                    "line": "BeamlineModel.forward",
-                    "lineno": 28,
-                    "memory_samples": [
-                        [
-                            641784167,
-                            80.60477293519112
-                        ],
-                        [
-                            651768459,
-                            79.1061423184009
-                        ]
-                    ],
-                    "n_avg_mb": 1.5211515426635742,
-                    "n_copy_mb_s": 0.0,
-                    "n_cpu_percent_c": 0.6855323661626271,
-                    "n_cpu_percent_python": 1.9547543945327004,
-                    "n_gpu_avg_memory_mb": 0.0,
-                    "n_gpu_peak_memory_mb": 0.0,
-                    "n_gpu_percent": 0,
-                    "n_growth_mb": 1.5211515426635742,
-                    "n_malloc_mb": 1.5211515426635742,
-                    "n_mallocs": 1,
-                    "n_peak_mb": 1.5211515426635742,
-                    "n_python_fraction": 0.005082,
-                    "n_sys_percent": 0.506239760094774,
-                    "n_usage_fraction": 0.019338264138484523
-                }
+        "/global/homes/j/jpga/Repositories/Bmad-X/dev/torch_module_profiling/torch_module_profiling_no_grad.py": {
+            "functions": [],
+            "imports": [
+                "import sys",
+                "import torch",
+                "import bmadx"
             ],
-            "leaks": {},
+            "leaks": {
+                "39": {
+                    "likelihood": 0.9836065573770492,
+                    "velocity_mb_s": 0.0
+                }
+            },
             "lines": [
                 {
-                    "line": "import torch\n",
-                    "lineno": 9,
-                    "memory_samples": [
-                        [
-                            222822084,
-                            9.02735297553451
-                        ],
-                        [
-                            222837709,
-                            17.932019026748648
-                        ],
-                        [
-                            222853042,
-                            26.782077058072556
-                        ],
-                        [
-                            222868375,
-                            35.66824232892076
-                        ],
-                        [
-                            262998417,
-                            44.898650385732125
-                        ],
-                        [
-                            303097167,
-                            54.20047575483486
-                        ],
-                        [
-                            440000000,
-                            63.49471140025434
-                        ],
-                        [
-                            549641709,
-                            72.81923716458371
-                        ]
-                    ],
-                    "n_avg_mb": 0.0,
-                    "n_copy_mb_s": 78.55784761755763,
-                    "n_cpu_percent_c": 0.0,
-                    "n_cpu_percent_python": 0.0,
-                    "n_gpu_avg_memory_mb": 0.0,
-                    "n_gpu_peak_memory_mb": 0.0,
-                    "n_gpu_percent": 0,
-                    "n_growth_mb": 74.07736778259277,
-                    "n_malloc_mb": 74.07736778259277,
-                    "n_mallocs": 0,
-                    "n_peak_mb": 74.07736778259277,
-                    "n_python_fraction": 0.4625786416506569,
-                    "n_sys_percent": 0.0,
-                    "n_usage_fraction": 0.9417389817421156
-                },
-                {
-                    "line": "from bmadx import Particle, Drift, Quadrupole, track_lattice, M_ELECTRON\n",
-                    "lineno": 11,
-                    "memory_samples": [
-                        [
-                            629331042,
-                            77.27221077449798
-                        ]
-                    ],
-                    "n_avg_mb": 0.0,
-                    "n_copy_mb_s": 0.0,
-                    "n_cpu_percent_c": 0.0,
-                    "n_cpu_percent_python": 0.0,
-                    "n_gpu_avg_memory_mb": 0.0,
-                    "n_gpu_peak_memory_mb": 0.0,
-                    "n_gpu_percent": 0,
-                    "n_growth_mb": 1.4799280166625977,
-                    "n_malloc_mb": 1.4799280166625977,
-                    "n_mallocs": 0,
-                    "n_peak_mb": 1.4799280166625977,
-                    "n_python_fraction": 0.857357,
-                    "n_sys_percent": 0.0,
-                    "n_usage_fraction": 0.0188141931224366
-                },
-                {
-                    "line": "    coords = dist.sample(torch.Size([n_particles])) # particles' coordinates\n",
-                    "lineno": 16,
-                    "memory_samples": [
-                        [
-                            639821667,
-                            79.03133548222375
-                        ]
-                    ],
-                    "n_avg_mb": 1.5817432403564453,
-                    "n_copy_mb_s": 0.0,
-                    "n_cpu_percent_c": 0.0,
-                    "n_cpu_percent_python": 0.0,
-                    "n_gpu_avg_memory_mb": 0.0,
-                    "n_gpu_peak_memory_mb": 0.0,
-                    "n_gpu_percent": 0,
-                    "n_growth_mb": 1.5817432403564453,
-                    "n_malloc_mb": 1.5817432403564453,
-                    "n_mallocs": 1,
-                    "n_peak_mb": 1.5817432403564453,
-                    "n_python_fraction": 0.858197,
-                    "n_sys_percent": 0.0,
-                    "n_usage_fraction": 0.020108560996963332
-                },
-                {
-                    "line": "            beam_out = track_lattice(self.beam_in, lattice)\n",
-                    "lineno": 39,
-                    "memory_samples": [
-                        [
-                            641784167,
-                            80.55988718426678
-                        ]
-                    ],
-                    "n_avg_mb": 1.5211515426635742,
-                    "n_copy_mb_s": 0.0,
-                    "n_cpu_percent_c": 0.6855323661626271,
-                    "n_cpu_percent_python": 1.9547543945327004,
-                    "n_gpu_avg_memory_mb": 0.0,
-                    "n_gpu_peak_memory_mb": 0.0,
-                    "n_gpu_percent": 0,
-                    "n_growth_mb": 1.5211515426635742,
-                    "n_malloc_mb": 1.5211515426635742,
-                    "n_mallocs": 1,
-                    "n_peak_mb": 1.5211515426635742,
-                    "n_python_fraction": 0.005082,
-                    "n_sys_percent": 0.506239760094774,
-                    "n_usage_fraction": 0.019338264138484523
-                },
-                {
-                    "line": "            dx = beam_out.x.std() - self.sigma_t\n",
-                    "lineno": 40,
-                    "memory_samples": [
-                        [
-                            651768459,
-                            79.0934918247547
-                        ]
-                    ],
+                    "end_region_line": 1,
+                    "line": "#from scalene import scalene_profiler\n",
+                    "lineno": 1,
+                    "memory_samples": [],
                     "n_avg_mb": 0.0,
                     "n_copy_mb_s": 0.0,
                     "n_cpu_percent_c": 0.0,
@@ -181,51 +34,2211 @@
                     "n_peak_mb": 0.0,
                     "n_python_fraction": 0,
                     "n_sys_percent": 0.0,
-                    "n_usage_fraction": 0.0
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 1
+                },
+                {
+                    "end_region_line": 2,
+                    "line": "\n",
+                    "lineno": 2,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 2
+                },
+                {
+                    "end_region_line": 3,
+                    "line": "import sys\n",
+                    "lineno": 3,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 3
+                },
+                {
+                    "end_region_line": 4,
+                    "line": "#print(sys.argv)\n",
+                    "lineno": 4,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 4
+                },
+                {
+                    "end_region_line": 5,
+                    "line": "n_particles = int(sys.argv[1])\n",
+                    "lineno": 5,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 5
+                },
+                {
+                    "end_region_line": 6,
+                    "line": "n_quadrupoles = int(sys.argv[2])\n",
+                    "lineno": 6,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 6
+                },
+                {
+                    "end_region_line": 7,
+                    "line": "n_slices = int(sys.argv[3])\n",
+                    "lineno": 7,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 7
+                },
+                {
+                    "end_region_line": 8,
+                    "line": "\n",
+                    "lineno": 8,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 8
+                },
+                {
+                    "end_region_line": 9,
+                    "line": "import torch\n",
+                    "lineno": 9,
+                    "memory_samples": [
+                        [
+                            4265107912,
+                            10.00029468536377
+                        ],
+                        [
+                            4265113923,
+                            20.000454902648926
+                        ],
+                        [
+                            4265118181,
+                            30.00053882598877
+                        ],
+                        [
+                            4265122159,
+                            40.000548362731934
+                        ],
+                        [
+                            4265125696,
+                            50.00190734863281
+                        ],
+                        [
+                            4265129583,
+                            60.00598430633545
+                        ]
+                    ],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 4.132757586041846,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 60.00598430633545,
+                    "n_malloc_mb": 60.00598430633545,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 60.00598430633545,
+                    "n_python_fraction": 0.6147706248278015,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0001262772175582011,
+                    "start_region_line": 9
+                },
+                {
+                    "end_region_line": 10,
+                    "line": "\n",
+                    "lineno": 10,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 10
+                },
+                {
+                    "end_region_line": 11,
+                    "line": "from bmadx import Particle, Drift, Quadrupole, track_lattice, M_ELECTRON\n",
+                    "lineno": 11,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 11
+                },
+                {
+                    "end_region_line": 12,
+                    "line": "\n",
+                    "lineno": 12,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 12
+                },
+                {
+                    "end_region_line": 18,
+                    "line": "def create_gaussian_beam(n_particles, mean, cov, s, p0c, mc2):\n",
+                    "lineno": 13,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 13
+                },
+                {
+                    "end_region_line": 18,
+                    "line": "    torch.manual_seed(0)\n",
+                    "lineno": 14,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 13
+                },
+                {
+                    "end_region_line": 18,
+                    "line": "    dist = torch.distributions.multivariate_normal.MultivariateNormal(mean, cov)\n",
+                    "lineno": 15,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 13
+                },
+                {
+                    "end_region_line": 18,
+                    "line": "    coords = dist.sample(torch.Size([n_particles])) # particles' coordinates\n",
+                    "lineno": 16,
+                    "memory_samples": [
+                        [
+                            4265136737,
+                            2356.9267349243164
+                        ],
+                        [
+                            4265147879,
+                            4645.751663208008
+                        ],
+                        [
+                            4265151686,
+                            6934.5737228393555
+                        ],
+                        [
+                            4265159381,
+                            4645.753395080566
+                        ],
+                        [
+                            4265162697,
+                            2356.9326934814453
+                        ]
+                    ],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 6874.56773853302,
+                    "n_malloc_mb": 6874.56773853302,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 6874.56773853302,
+                    "n_python_fraction": 0.016751156710060708,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.014466911858417267,
+                    "start_region_line": 13
+                },
+                {
+                    "end_region_line": 18,
+                    "line": "    \n",
+                    "lineno": 17,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 13
+                },
+                {
+                    "end_region_line": 18,
+                    "line": "    return Particle(*coords.T, s, p0c, mc2)\n",
+                    "lineno": 18,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 13
+                },
+                {
+                    "end_region_line": 19,
+                    "line": "\n",
+                    "lineno": 19,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 19
+                },
+                {
+                    "end_region_line": 20,
+                    "line": "class BeamlineModel(torch.nn.Module):\n",
+                    "lineno": 20,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 20
+                },
+                {
+                    "end_region_line": 27,
+                    "line": "    def __init__(self, k_set, l_d, l_q, beam_in, sigma_t):\n",
+                    "lineno": 21,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 21
+                },
+                {
+                    "end_region_line": 27,
+                    "line": "        super().__init__()\n",
+                    "lineno": 22,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 21
+                },
+                {
+                    "end_region_line": 27,
+                    "line": "        self.register_parameter('k_set', torch.nn.Parameter(k_set))\n",
+                    "lineno": 23,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 21
+                },
+                {
+                    "end_region_line": 27,
+                    "line": "        self.l_d = l_d\n",
+                    "lineno": 24,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 21
+                },
+                {
+                    "end_region_line": 27,
+                    "line": "        self.l_q = l_q\n",
+                    "lineno": 25,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 21
+                },
+                {
+                    "end_region_line": 27,
+                    "line": "        self.beam_in = beam_in\n",
+                    "lineno": 26,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 21
+                },
+                {
+                    "end_region_line": 27,
+                    "line": "        self.sigma_t = sigma_t\n",
+                    "lineno": 27,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 21
+                },
+                {
+                    "end_region_line": 44,
+                    "line": "    def forward(self):\n",
+                    "lineno": 28,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 28
+                },
+                {
+                    "end_region_line": 44,
+                    "line": "        # create lattice\n",
+                    "lineno": 29,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 28
+                },
+                {
+                    "end_region_line": 44,
+                    "line": "        lattice = []\n",
+                    "lineno": 30,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 28
+                },
+                {
+                    "end_region_line": 44,
+                    "line": "        half_drift = Drift( L = self.l_d/2)\n",
+                    "lineno": 31,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 28
+                },
+                {
+                    "end_region_line": 37,
+                    "line": "        for k in self.k_set:\n",
+                    "lineno": 32,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 32
+                },
+                {
+                    "end_region_line": 37,
+                    "line": "            lattice.append( half_drift )\n",
+                    "lineno": 33,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 32
+                },
+                {
+                    "end_region_line": 37,
+                    "line": "            lattice.append( Quadrupole(L = self.l_q,\n",
+                    "lineno": 34,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 32
+                },
+                {
+                    "end_region_line": 37,
+                    "line": "                                       K1 = k,\n",
+                    "lineno": 35,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 32
+                },
+                {
+                    "end_region_line": 37,
+                    "line": "                                       NUM_STEPS = n_slices) )\n",
+                    "lineno": 36,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 32
+                },
+                {
+                    "end_region_line": 37,
+                    "line": "            lattice.append( half_drift )\n",
+                    "lineno": 37,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 32
+                },
+                {
+                    "end_region_line": 44,
+                    "line": "        with torch.no_grad():    \n",
+                    "lineno": 38,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 28
+                },
+                {
+                    "end_region_line": 44,
+                    "line": "            beam_out = track_lattice(self.beam_in, lattice)\n",
+                    "lineno": 39,
+                    "memory_samples": [
+                        [
+                            4525862577,
+                            5027.264083862305
+                        ],
+                        [
+                            5120009652,
+                            5790.219390869141
+                        ],
+                        [
+                            5893956609,
+                            9700.326340675354
+                        ],
+                        [
+                            6057284385,
+                            10367.90013217926
+                        ],
+                        [
+                            6057294134,
+                            10081.799271583557
+                        ],
+                        [
+                            6140823225,
+                            11130.846886634827
+                        ],
+                        [
+                            6140831912,
+                            11893.792077064514
+                        ],
+                        [
+                            6179608537,
+                            11893.792145729065
+                        ],
+                        [
+                            6256068943,
+                            10749.373398780823
+                        ],
+                        [
+                            6373687993,
+                            11130.84697151184
+                        ],
+                        [
+                            6776509335,
+                            13038.253496170044
+                        ],
+                        [
+                            7024703559,
+                            13515.09811592102
+                        ],
+                        [
+                            7024715091,
+                            14182.671892166138
+                        ],
+                        [
+                            7283292253,
+                            13801.201654434204
+                        ],
+                        [
+                            7374983103,
+                            15708.56597328186
+                        ],
+                        [
+                            7596695862,
+                            17615.931924819946
+                        ],
+                        [
+                            8746016496,
+                            20286.248720169067
+                        ],
+                        [
+                            8782591762,
+                            19141.830026626587
+                        ],
+                        [
+                            8812711513,
+                            19523.30314064026
+                        ],
+                        [
+                            8974618063,
+                            21049.19471168518
+                        ],
+                        [
+                            9132778607,
+                            21049.195528030396
+                        ],
+                        [
+                            9132782495,
+                            21430.667726516724
+                        ],
+                        [
+                            9209545945,
+                            22575.087549209595
+                        ],
+                        [
+                            9359909081,
+                            22575.08748817444
+                        ],
+                        [
+                            9434401898,
+                            22193.614656448364
+                        ],
+                        [
+                            9624047744,
+                            22956.561532974243
+                        ],
+                        [
+                            9804362869,
+                            24100.98161506653
+                        ],
+                        [
+                            10035084089,
+                            24863.927740097046
+                        ],
+                        [
+                            10208378892,
+                            17997.41304588318
+                        ],
+                        [
+                            10287360274,
+                            15708.572729110718
+                        ],
+                        [
+                            10370866090,
+                            17997.41010093689
+                        ],
+                        [
+                            10446876439,
+                            18760.356229782104
+                        ],
+                        [
+                            10456060108,
+                            18760.357137680054
+                        ],
+                        [
+                            10720163573,
+                            17234.46615409851
+                        ],
+                        [
+                            10790787297,
+                            17615.939306259155
+                        ],
+                        [
+                            10866682395,
+                            18760.358114242554
+                        ],
+                        [
+                            11283973847,
+                            18760.36176109314
+                        ],
+                        [
+                            11339712132,
+                            19618.679174423218
+                        ],
+                        [
+                            11339716550,
+                            19237.20633506775
+                        ],
+                        [
+                            11339720648,
+                            19141.83492088318
+                        ],
+                        [
+                            11387551613,
+                            19904.780241012573
+                        ],
+                        [
+                            11579958497,
+                            19904.781171798706
+                        ],
+                        [
+                            11654898926,
+                            21812.145322799683
+                        ],
+                        [
+                            11688521054,
+                            22193.61905479431
+                        ],
+                        [
+                            12228039281,
+                            23338.038953781128
+                        ],
+                        [
+                            12477107928,
+                            24863.9311504364
+                        ],
+                        [
+                            12568887530,
+                            25245.4047832489
+                        ],
+                        [
+                            12646556644,
+                            25245.40540122986
+                        ],
+                        [
+                            12687325948,
+                            26008.352117538452
+                        ],
+                        [
+                            12696782251,
+                            26008.352293014526
+                        ],
+                        [
+                            13041151131,
+                            24482.460454940796
+                        ],
+                        [
+                            13041163836,
+                            24863.93419456482
+                        ],
+                        [
+                            13279115090,
+                            18378.890493392944
+                        ],
+                        [
+                            13453537185,
+                            19141.83601951599
+                        ],
+                        [
+                            13453546032,
+                            19141.83601951599
+                        ],
+                        [
+                            13458793609,
+                            15327.106618881226
+                        ],
+                        [
+                            13866891214,
+                            18378.89217185974
+                        ],
+                        [
+                            14074099446,
+                            17615.949460983276
+                        ],
+                        [
+                            14103769392,
+                            18760.367712020874
+                        ],
+                        [
+                            14205224800,
+                            20381.63119316101
+                        ],
+                        [
+                            14205244669,
+                            19904.78687095642
+                        ],
+                        [
+                            14254943250,
+                            19904.786924362183
+                        ],
+                        [
+                            14398720612,
+                            20667.733709335327
+                        ],
+                        [
+                            14535639704,
+                            20286.260862350464
+                        ],
+                        [
+                            15117775254,
+                            22575.10054588318
+                        ],
+                        [
+                            15298433450,
+                            24100.991773605347
+                        ],
+                        [
+                            15507704195,
+                            25626.886045455933
+                        ],
+                        [
+                            15507711780,
+                            25626.886045455933
+                        ],
+                        [
+                            15689766816,
+                            25626.886037826538
+                        ],
+                        [
+                            15689802685,
+                            26008.3586101532
+                        ],
+                        [
+                            15689835348,
+                            25626.88639640808
+                        ],
+                        [
+                            15689842532,
+                            25626.88639640808
+                        ],
+                        [
+                            15863079313,
+                            24863.94123649597
+                        ],
+                        [
+                            15863191289,
+                            17234.479787826538
+                        ],
+                        [
+                            15867117190,
+                            16090.058156967163
+                        ],
+                        [
+                            15940468779,
+                            15708.585691452026
+                        ],
+                        [
+                            15940494579,
+                            17234.47790336609
+                        ],
+                        [
+                            16022394992,
+                            17615.951025009155
+                        ],
+                        [
+                            16022406514,
+                            17997.424016952515
+                        ],
+                        [
+                            16022410642,
+                            18378.896230697632
+                        ],
+                        [
+                            16097957960,
+                            18760.37070274353
+                        ],
+                        [
+                            16127846377,
+                            18378.897397994995
+                        ],
+                        [
+                            16269802430,
+                            18378.897932052612
+                        ],
+                        [
+                            16895432582,
+                            18378.902654647827
+                        ],
+                        [
+                            16948100514,
+                            20000.165662765503
+                        ],
+                        [
+                            17409207487,
+                            21049.2153301239
+                        ],
+                        [
+                            17596399227,
+                            21812.161573410034
+                        ],
+                        [
+                            17767109903,
+                            23338.05323600769
+                        ],
+                        [
+                            17799660767,
+                            22956.581106185913
+                        ],
+                        [
+                            17868115003,
+                            23338.05340385437
+                        ],
+                        [
+                            18038083079,
+                            24100.999502182007
+                        ],
+                        [
+                            18108390265,
+                            25245.418691635132
+                        ],
+                        [
+                            18314119639,
+                            25245.420988082886
+                        ],
+                        [
+                            18412449587,
+                            25245.421537399292
+                        ],
+                        [
+                            18412477120,
+                            25626.8933467865
+                        ],
+                        [
+                            18412526144,
+                            24482.47437095642
+                        ],
+                        [
+                            18574428415,
+                            22193.636304855347
+                        ],
+                        [
+                            18578422488,
+                            16090.065732955933
+                        ],
+                        [
+                            18650469484,
+                            17615.957555770874
+                        ],
+                        [
+                            18870308995,
+                            19523.323148727417
+                        ]
+                    ],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 8.531572952156072,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 24795.85327720642,
+                    "n_malloc_mb": 468257.9072856903,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 24795.85327720642,
+                    "n_python_fraction": 0.0002482724214585164,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.9854068109240245,
+                    "start_region_line": 28
+                },
+                {
+                    "end_region_line": 44,
+                    "line": "            dx = beam_out.x.std() - self.sigma_t\n",
+                    "lineno": 40,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 28
+                },
+                {
+                    "end_region_line": 44,
+                    "line": "            dy = beam_out.y.std() - self.sigma_t\n",
+                    "lineno": 41,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 28
+                },
+                {
+                    "end_region_line": 44,
+                    "line": "            delta = torch.sqrt( dx**2 + dy**2 )\n",
+                    "lineno": 42,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 28
+                },
+                {
+                    "end_region_line": 44,
+                    "line": "        \n",
+                    "lineno": 43,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 28
+                },
+                {
+                    "end_region_line": 44,
+                    "line": "        return delta\n",
+                    "lineno": 44,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 28
+                },
+                {
+                    "end_region_line": 45,
+                    "line": "\n",
+                    "lineno": 45,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 45
+                },
+                {
+                    "end_region_line": 46,
+                    "line": "# model constants\n",
+                    "lineno": 46,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 46
+                },
+                {
+                    "end_region_line": 47,
+                    "line": "l_d = 0.9 # drift length\n",
+                    "lineno": 47,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 47
+                },
+                {
+                    "end_region_line": 48,
+                    "line": "l_q = 0.1 # quad length\n",
+                    "lineno": 48,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 48
+                },
+                {
+                    "end_region_line": 49,
+                    "line": "sigma_t = 5e-3 # target beam size\n",
+                    "lineno": 49,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 49
+                },
+                {
+                    "end_region_line": 50,
+                    "line": "\n",
+                    "lineno": 50,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 50
+                },
+                {
+                    "end_region_line": 51,
+                    "line": "# incoming beam\n",
+                    "lineno": 51,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 51
+                },
+                {
+                    "end_region_line": 52,
+                    "line": "beam_in = create_gaussian_beam(n_particles, \n",
+                    "lineno": 52,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 52
+                },
+                {
+                    "end_region_line": 53,
+                    "line": "                               mean = torch.zeros(6)*1e-3, \n",
+                    "lineno": 53,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 53
+                },
+                {
+                    "end_region_line": 54,
+                    "line": "                               cov = torch.eye(6)*1e-6, \n",
+                    "lineno": 54,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 54
+                },
+                {
+                    "end_region_line": 55,
+                    "line": "                               s = torch.tensor(0.0), \n",
+                    "lineno": 55,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 55
+                },
+                {
+                    "end_region_line": 56,
+                    "line": "                               p0c = torch.tensor(4e7),\n",
+                    "lineno": 56,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 56
+                },
+                {
+                    "end_region_line": 57,
+                    "line": "                               mc2 = torch.tensor(M_ELECTRON))\n",
+                    "lineno": 57,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 57
+                },
+                {
+                    "end_region_line": 58,
+                    "line": "\n",
+                    "lineno": 58,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 58
+                },
+                {
+                    "end_region_line": 59,
+                    "line": "# model evaluation and backward pass\n",
+                    "lineno": 59,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 59
+                },
+                {
+                    "end_region_line": 60,
+                    "line": "k_set = torch.zeros(n_quadrupoles, requires_grad=True)\n",
+                    "lineno": 60,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 60
+                },
+                {
+                    "end_region_line": 61,
+                    "line": "#scalene_profiler.start()\n",
+                    "lineno": 61,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 61
+                },
+                {
+                    "end_region_line": 62,
+                    "line": "model = BeamlineModel(k_set, l_d, l_q, beam_in, sigma_t)\n",
+                    "lineno": 62,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 62
+                },
+                {
+                    "end_region_line": 63,
+                    "line": "loss = model()\n",
+                    "lineno": 63,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 63
+                },
+                {
+                    "end_region_line": 64,
+                    "line": "#loss.backward()\n",
+                    "lineno": 64,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 64
+                },
+                {
+                    "end_region_line": 65,
+                    "line": "#scalene_profiler.stop()",
+                    "lineno": 65,
+                    "memory_samples": [],
+                    "n_avg_mb": 0.0,
+                    "n_copy_mb_s": 0.0,
+                    "n_cpu_percent_c": 0.0,
+                    "n_cpu_percent_python": 0.0,
+                    "n_gpu_avg_memory_mb": 0.0,
+                    "n_gpu_peak_memory_mb": 0.0,
+                    "n_gpu_percent": 0,
+                    "n_growth_mb": 0.0,
+                    "n_malloc_mb": 0.0,
+                    "n_mallocs": 0,
+                    "n_peak_mb": 0.0,
+                    "n_python_fraction": 0,
+                    "n_sys_percent": 0.0,
+                    "n_usage_fraction": 0.0,
+                    "start_region_line": 65
                 }
             ],
-            "percent_cpu_time": 3.1465265207901014
+            "percent_cpu_time": 0
         }
     },
     "gpu": false,
-    "growth_rate": 100.64709179504058,
-    "max_footprint_fname": "./torch_module_profiling_no_grad.py",
-    "max_footprint_lineno": 40,
-    "max_footprint_mb": 80.7335376739502,
+    "growth_rate": 3.2254553074876884,
+    "max_footprint_fname": "/global/homes/j/jpga/Repositories/Bmad-X/dev/torch_module_profiling/torch_module_profiling_no_grad.py",
+    "max_footprint_lineno": 39,
+    "max_footprint_mb": 27152.785970687866,
     "memory": true,
-    "program": "./torch_module_profiling_no_grad.py",
+    "program": "/global/homes/j/jpga/Repositories/Bmad-X/dev/torch_module_profiling/torch_module_profiling_no_grad.py",
     "samples": [
         [
-            222781292,
-            9.020978424242305
+            4397160861,
+            3882.8427734375
         ],
         [
-            222785750,
-            17.91791858503764
+            4659377493,
+            5790.211051940918
         ],
         [
-            222790042,
-            26.787059597468225
+            4709732799,
+            5790.211784362793
         ],
         [
-            222794250,
-            35.65885714837496
+            4852461942,
+            5790.210884094238
         ],
         [
-            262991209,
-            44.913219713438366
+            5119949205,
+            6171.692398071289
         ],
         [
-            303091125,
-            54.207846264496034
+            5224959880,
+            6553.167945861816
         ],
         [
-            439992875,
-            63.48568338717451
+            5346913038,
+            7316.116287231445
         ],
         [
-            549634917,
-            72.82356473570239
+            5401836042,
+            7697.589225769043
+        ],
+        [
+            5566850858,
+            8937.37939453125
+        ],
+        [
+            5566871878,
+            9223.481010437012
+        ],
+        [
+            5650349010,
+            9986.426849365234
+        ],
+        [
+            5690408205,
+            9986.426933288574
+        ],
+        [
+            5840057015,
+            9986.426995277405
+        ],
+        [
+            6663564077,
+            12656.779443740845
+        ],
+        [
+            6908665885,
+            14182.671869277954
+        ],
+        [
+            7024641409,
+            13515.097787857056
+        ],
+        [
+            7467024910,
+            16852.985734939575
+        ],
+        [
+            7596684029,
+            16852.986032485962
+        ],
+        [
+            7828721183,
+            17615.9324054718
+        ],
+        [
+            7828722506,
+            17234.460191726685
+        ],
+        [
+            7924186293,
+            18378.878671646118
+        ],
+        [
+            8046258660,
+            19141.825090408325
+        ],
+        [
+            8272718422,
+            15708.57321357727
+        ],
+        [
+            8272723592,
+            16852.99138069153
+        ],
+        [
+            8411143495,
+            18378.88366127014
+        ],
+        [
+            8667201915,
+            20286.24785041809
+        ],
+        [
+            8745990426,
+            21049.193895339966
+        ],
+        [
+            8870859800,
+            19904.775499343872
+        ],
+        [
+            9132737237,
+            21812.141466140747
+        ],
+        [
+            9209478435,
+            22956.559762954712
+        ],
+        [
+            9209488724,
+            22956.559762954712
+        ],
+        [
+            9246879090,
+            21430.668870925903
+        ],
+        [
+            9623894138,
+            23338.03373146057
+        ],
+        [
+            10035010918,
+            24959.29882621765
+        ],
+        [
+            10287343882,
+            16852.991033554077
+        ],
+        [
+            10456043646,
+            19141.82935142517
+        ],
+        [
+            10477659549,
+            19141.829793930054
+        ],
+        [
+            10520143084,
+            18378.88435935974
+        ],
+        [
+            10548111223,
+            19523.302549362183
+        ],
+        [
+            10625403340,
+            17234.466329574585
+        ],
+        [
+            10701635046,
+            17234.466039657593
+        ],
+        [
+            10790753883,
+            17615.938543319702
+        ],
+        [
+            10790759223,
+            17997.411520004272
+        ],
+        [
+            10876454026,
+            19141.830770492554
+        ],
+        [
+            10991564854,
+            19523.304609298706
+        ],
+        [
+            11044307790,
+            19141.830739974976
+        ],
+        [
+            11204370658,
+            17234.469701766968
+        ],
+        [
+            11204387761,
+            17997.41641807556
+        ],
+        [
+            11387482680,
+            19618.679349899292
+        ],
+        [
+            11387485175,
+            20000.151670455933
+        ],
+        [
+            11579770385,
+            19904.781156539917
+        ],
+        [
+            11773270495,
+            21526.045194625854
+        ],
+        [
+            12019054687,
+            21812.14722251892
+        ],
+        [
+            12019055538,
+            22193.61942100525
+        ],
+        [
+            12300158455,
+            22956.566884994507
+        ],
+        [
+            12476978418,
+            23338.03924369812
+        ],
+        [
+            12477003978,
+            24100.985960006714
+        ],
+        [
+            13041082108,
+            24863.93419456482
+        ],
+        [
+            13041087619,
+            25626.879384994507
+        ],
+        [
+            13617578566,
+            17615.945753097534
+        ],
+        [
+            14590230578,
+            21144.57893180847
+        ],
+        [
+            14638232242,
+            21907.524129867554
+        ],
+        [
+            14904086068,
+            23338.04577445984
+        ],
+        [
+            14938062449,
+            23719.518056869507
+        ],
+        [
+            15298342124,
+            23719.518796920776
+        ],
+        [
+            15298359577,
+            24482.464750289917
+        ],
+        [
+            15689745054,
+            26103.73064994812
+        ],
+        [
+            15867106490,
+            15708.585180282593
+        ],
+        [
+            15940455022,
+            17234.47790336609
+        ],
+        [
+            16097923624,
+            19141.842916488647
+        ],
+        [
+            16195763087,
+            18760.369985580444
+        ],
+        [
+            16195765291,
+            19141.84369468689
+        ],
+        [
+            16195766313,
+            19523.315938949585
+        ],
+        [
+            16344089511,
+            15708.587301254272
+        ],
+        [
+            16344091665,
+            16090.059606552124
+        ],
+        [
+            16669540815,
+            18378.900175094604
+        ],
+        [
+            16669549882,
+            17997.427198410034
+        ],
+        [
+            16671953803,
+            16090.061254501343
+        ],
+        [
+            16821510516,
+            17234.483777999878
+        ],
+        [
+            16821522379,
+            16853.01156425476
+        ],
+        [
+            16821532879,
+            18378.902723312378
+        ],
+        [
+            16993938139,
+            19618.693616867065
+        ],
+        [
+            17038762643,
+            19904.79454612732
+        ],
+        [
+            17179868018,
+            20286.267545700073
+        ],
+        [
+            17249162122,
+            21812.15962791443
+        ],
+        [
+            17361354479,
+            20667.741415023804
+        ],
+        [
+            17457279546,
+            22289.004987716675
+        ],
+        [
+            17666026261,
+            23338.053564071655
+        ],
+        [
+            17666029487,
+            23719.525777816772
+        ],
+        [
+            17767070287,
+            22575.108045578003
+        ],
+        [
+            17799637703,
+            22956.581106185913
+        ],
+        [
+            18126549180,
+            25245.419134140015
+        ],
+        [
+            18203107263,
+            25245.419813156128
+        ],
+        [
+            18314084181,
+            25245.420988082886
+        ],
+        [
+            18412424769,
+            25722.265523910522
+        ],
+        [
+            18574256424,
+            24482.475896835327
+        ],
+        [
+            18574296040,
+            20667.744329452515
+        ],
+        [
+            18650423886,
+            15708.593297958374
+        ],
+        [
+            18801158187,
+            18760.377172470093
+        ],
+        [
+            18896473008,
+            19141.850942611694
         ]
     ]
 }

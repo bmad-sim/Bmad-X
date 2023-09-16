@@ -7,7 +7,7 @@ from bmadx.bmad_torch.track_torch import (
     TorchLattice,
     TorchQuadrupole,
 )
-from bmadx.bmad_torch.utils import get_transport_matrix
+from bmadx.bmad_torch.taylor_map import get_transport_matrix
 
 
 def test_lattice():

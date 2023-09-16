@@ -1,7 +1,8 @@
-from bmadx.bmad.modules import Particle
-from bmadx.bmad.code.offset_particle import make_offset_particle
-from bmadx.bmad.code.low_energy_z_correction import make_low_energy_z_correction
-from .quad_mat2_calc import make_quad_mat2_calc
+from bmadx.structures import Particle
+
+from bmadx.low_level.offset_particle import make_offset_particle
+from bmadx.low_level.low_energy_z_correction import make_low_energy_z_correction
+from bmadx.low_level.quad_mat2_calc import make_quad_mat2_calc
 
 def make_track_a_quadrupole(lib):
     """Makes track_a_quadrupole given the library lib."""
