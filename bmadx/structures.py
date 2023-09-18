@@ -16,6 +16,18 @@ Quadrupole = namedtuple('Quadrupole',
                         defaults=(None, None, 1, 0.0, 0.0, 0.0)
                        )
 
+Sextupole = namedtuple('Sextupole',
+                        [
+                            'L',
+                            'K2',
+                            'NUM_STEPS',
+                            'X_OFFSET',
+                            'Y_OFFSET',
+                            'TILT'
+                        ],
+                        defaults=(None, None, 1, 0.0, 0.0, 0.0)
+                       )
+
 CrabCavity = namedtuple('CrabCavity', 
                         [
                             'L', 

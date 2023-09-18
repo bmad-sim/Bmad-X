@@ -122,7 +122,7 @@ class TorchSextupole(TorchElement):
         TILT: Tensor = torch.tensor(0.0),
     ):
         super(TorchSextupole, self).__init__(
-            LIB_DICT[torch]['tracking_routine']['Quadrupole']
+            LIB_DICT[torch]['tracking_routine']['Sextupole']
         )
         self.register_parameter("L", Parameter(L, requires_grad=False))
         self.register_parameter("X_OFFSET", Parameter(X_OFFSET, requires_grad=False))
