@@ -298,7 +298,7 @@ def particle_to_beam(particle: Particle):
 
     return Beam(
         coords,
-        p0c = params[0],
-        s = params[1],
+        s = params[0],
+        p0c = params[1],
         mc2 = params[2]
     )
