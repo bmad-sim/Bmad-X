@@ -70,7 +70,7 @@ class TorchElement(Module):
 
     def forward(self, beam):
         #par = self.track(beam, self)
-        #return par_to_beam(par)
+        #return particle_to_beam(par)
         return self.track(beam, self)
 
     @property
@@ -275,7 +275,7 @@ class TorchLattice(Module):
         )
         return out[0].shape
 
-def par_to_beam(par):
+def particle_to_beam(par):
     '''Returns Beam corresponding to Particle'''
     coords = torch.vstack(par[:6]).T
     return Beam(
