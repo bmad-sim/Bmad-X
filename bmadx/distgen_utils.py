@@ -1,27 +1,32 @@
 import yaml
 
 import torch
-import numpy as np
 
 import distgen
 from distgen import Generator
 from distgen.physical_constants import unit_registry as unit
 
 from bmadx.constants import M_ELECTRON
-from bmadx.coordinates import openpmd_to_bmadx
-from bmadx.bmad_torch.track_torch import Beam
+from bmadx.bmad_torch.track_torch import par_to_beam
+from bmadx.pmd_utils import openpmd_to_bmadx_particles
 
-def create_pmd_particlegroup(base_yaml, transforms_yaml, n_particle):
-    '''Creates openPMD ParticleGroup from dist and transform yaml files
+def create_pmd_particlegroup(
+        base_yaml,
+        transforms_yaml,
+        n_particle
+):
+    """Creates openPMD ParticleGroup from dist and transform yaml files
     using distgen
 
-    Args: 
+        Params
+        ------ 
         base_yaml: yaml file with base distribution parameters
         transform_yaml: yaml file with transforms
-    
-    Returns:
+        
+        Returns
+        -------
         generated openPMD ParticleGroup
-    '''
+    """
 
     gen = Generator(base_yaml)
 
@@ -42,20 +47,91 @@ def create_pmd_particlegroup(base_yaml, transforms_yaml, n_particle):
 
     return particle_group
 
-def create_beam(base_yaml, transforms_yaml, p0c, n_particle=None, save_as=None):
-    '''Creates bmadx torch Beam from dist and transform yaml files
+
+def create_particles(
+        base_yaml, 
+        transforms_yaml, 
+        p0c, 
+        s = 0.0, 
+        mc2 = M_ELECTRON,
+        n_particle = None
+):
+    """
+    Creates bmadx Particle distribution from dist and transform yaml files
     using distgen
 
-    Args: 
+        Params
+        ------ 
         base_yaml: yaml file with base distribution parameters
         transform_yaml: yaml file with transforms
         p0c: reference momentum of Beam coordinates in eV
         save_as (str): if provided, saves the generated Beam
-    
-    Returns:
-        generated Bmad-X torch Beam. 
-    '''
 
+        Returns
+        -------
+        generated Bmad-X Particle namedtuple. 
+    """
+
+    pmd_particle = create_pmd_particlegroup(
+        base_yaml,
+        transforms_yaml,
+        n_particle
+    )
+
+    particle = openpmd_to_bmadx_particles(
+        pmd_particle,
+        p0c,
+        s,
+        mc2
+    )
+
+    return particle
+
+def create_beam(
+        base_yaml, 
+        transforms_yaml, 
+        p0c, 
+        s = torch.tensor(0.0, dtype=torch.float32), 
+        mc2 = torch.tensor(M_ELECTRON, dtype=torch.float32),
+        n_particle = None, 
+        save_as = None
+):
+    """
+    Creates bmadx torch Beam from dist and transform yaml files
+    using distgen
+
+        Params
+        ------
+        base_yaml: yaml file with base distribution parameters
+        transform_yaml: yaml file with transforms
+
+        p0c: reference momentum of Beam coordinates in eV
+        save_as (str): if provided, saves the generated Beam
+        
+        Returns
+        -------
+        generated Bmad-X torch Beam. 
+    """
+
+    particle = create_particles(
+        base_yaml,
+        transforms_yaml,
+        p0c,
+        s,
+        mc2,
+        n_particle
+    )
+
+    beam = par_to_beam(particle)
+
+    if save_as is not None:
+        torch.save(beam, save_as)
+        print(f'ground truth distribution saved at {save_as}')
+
+    return beam
+
+
+"""
     # Generate openPMD particle group:
     particle_group = create_pmd_particlegroup(base_yaml, transforms_yaml, n_particle)
 
@@ -78,3 +154,4 @@ def create_beam(base_yaml, transforms_yaml, p0c, n_particle=None, save_as=None):
         print(f'ground truth distribution saved at {save_as}')
 
     return beam
+"""
