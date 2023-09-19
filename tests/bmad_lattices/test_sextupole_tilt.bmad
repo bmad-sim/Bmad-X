@@ -1,0 +1,14 @@
+parameter[lattice] = test_sextupole_tilt
+
+beginning[beta_a] = 10
+beginning[beta_b] = 10
+
+beginning[p0c] = 4.0e7
+parameter[particle] = electron
+parameter[geometry] = open
+
+sxtpl: sextupole, L = 0.1, K2 = 10.0, tilt=0.3
+
+lat: line = (sxtpl)
+
+use, lat
