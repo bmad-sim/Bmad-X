@@ -6,4 +6,5 @@ misc
 **/*digested*
 **/__pycache__
 *.pyc
+.idea/
 **/*.html

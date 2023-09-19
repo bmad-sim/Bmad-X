@@ -2,7 +2,8 @@
 from .constants import *
 
 # Structures (particle and elements named tuples)
-from .structures import Particle, Drift, Quadrupole, CrabCavity, RFCavity, SBend
+from .structures import Particle, Drift, Quadrupole, CrabCavity, RFCavity, SBend, \
+    Sextupole
 
 # Tracking routines
 from .tracking_routines.track_a_drift import make_track_a_drift
@@ -10,6 +11,7 @@ from .tracking_routines.track_a_quadrupole import make_track_a_quadrupole
 from .tracking_routines.track_a_crab_cavity import make_track_a_crab_cavity
 from .tracking_routines.track_a_rf_cavity import make_track_a_rf_cavity
 from .tracking_routines.track_a_bend import make_track_a_bend
+from .tracking_routines.track_a_sextupole import make_track_a_sextupole
 
 # Tracking library dictionary (as of now, supports NumPy and PyTorch): 
 import numpy as np
@@ -22,6 +24,7 @@ def make_tracking_dict(lib):
         "CrabCavity" : make_track_a_crab_cavity(lib),
         "RFCavity" : make_track_a_rf_cavity(lib),
         "SBend": make_track_a_bend(lib),
+        "Sextupole": make_track_a_sextupole(lib)
     }
     return dic
 

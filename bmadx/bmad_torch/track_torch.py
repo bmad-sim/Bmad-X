@@ -20,27 +20,27 @@ class Beam(torch.nn.Module):
 
     @property
     def x(self):
-        return self.data[:,0]
+        return self.data[..., 0]
 
     @property
     def px(self):
-        return self.data[:,1]
+        return self.data[..., 1]
 
     @property
     def y(self):
-        return self.data[:,2]
+        return self.data[..., 2]
 
     @property
     def py(self):
-        return self.data[:,3]
+        return self.data[..., 3]
 
     @property
     def z(self):
-        return self.data[:,4]
+        return self.data[..., 4]
 
     @property
     def pz(self):
-        return self.data[:,5]
+        return self.data[..., 5]
 
     def to_list_of_beams(self):
         beams = []
@@ -111,6 +111,27 @@ class TorchQuadrupole(TorchElement):
         self.register_parameter("TILT", Parameter(TILT, requires_grad=False))
         self.register_parameter("K1", Parameter(K1, requires_grad=False))
 
+class TorchSextupole(TorchElement):
+    def __init__(
+        self,
+        L: Tensor,
+        K2: Tensor,
+        NUM_STEPS: int = 1,
+        X_OFFSET: Tensor = torch.tensor(0.0),
+        Y_OFFSET: Tensor = torch.tensor(0.0),
+        TILT: Tensor = torch.tensor(0.0),
+    ):
+        super(TorchSextupole, self).__init__(
+            LIB_DICT[torch]['tracking_routine']['Sextupole']
+        )
+        self.register_parameter("L", Parameter(L, requires_grad=False))
+        self.register_parameter("X_OFFSET", Parameter(X_OFFSET, requires_grad=False))
+        self.register_parameter("Y_OFFSET", Parameter(Y_OFFSET, requires_grad=False))
+        self.register_parameter(
+            "NUM_STEPS", Parameter(torch.tensor(NUM_STEPS), requires_grad=False)
+        )
+        self.register_parameter("TILT", Parameter(TILT, requires_grad=False))
+        self.register_parameter("K2", Parameter(K2, requires_grad=False))
 
 class TorchCrabCavity(TorchElement):
     def __init__(
