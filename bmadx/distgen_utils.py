@@ -7,7 +7,7 @@ from distgen import Generator
 from distgen.physical_constants import unit_registry as unit
 
 from bmadx.constants import M_ELECTRON
-from bmadx.bmad_torch.track_torch import par_to_beam
+from bmadx.bmad_torch.track_torch import particle_to_beam
 from bmadx.pmd_utils import openpmd_to_bmadx_particles
 
 def create_pmd_particlegroup(
@@ -122,7 +122,7 @@ def create_beam(
         n_particle
     )
 
-    beam = par_to_beam(particle)
+    beam = particle_to_beam(particle)
 
     if save_as is not None:
         torch.save(beam, save_as)
