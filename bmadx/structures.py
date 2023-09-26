@@ -1,6 +1,21 @@
 from collections import namedtuple
+from bmadx.constants import M_ELECTRON
 
-Particle = namedtuple('Particle', 'x px y py z pz s p0c mc2')
+Particle = namedtuple(
+    'Particle', 
+    'x px y py z pz s p0c mc2'#,
+#    defaults = (
+#        None,
+#        None,
+#        None,
+#        None,
+#        None,
+#        None,
+#        0.0,
+#        None,
+#        M_ELECTRON
+#    )
+)
 
 Drift = namedtuple('Drift', 'L')
 

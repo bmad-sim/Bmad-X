@@ -9,7 +9,7 @@ def plot_projections(
         coords = ('x', 'px', 'y', 'py', 'z', 'pz'),
         bins = 50,
         scale = 1e3,
-        background = False,
+        background = 0,
         same_lims = False,
         custom_lims = None
         ):
@@ -155,7 +155,7 @@ def plot_projections(
                            range=[[min_x, max_x],
                                   [min_y, max_y]],
                            cmap = mycmap,
-                           vmin = not background)
+                           vmin = background)
             
             ax[j,i].get_shared_x_axes().join(ax[j,i], ax[i,i])
 
