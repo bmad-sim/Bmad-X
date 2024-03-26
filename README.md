@@ -15,7 +15,7 @@ Cite
 ```bibtex
 @inproceedings{gonzalez-aguilera:ipac2023-wepa065,
 	title        = {Towards fully differentiable accelerator modeling},
-	author       = {Gonzalez-Aguilera, J. and Kim, Y.-K. and Roussel R. and Edelen A. and C. Mayes},
+	author       = {Gonzalez-Aguilera, J. and Kim, Y.-K. and Roussel, R. and Edelen, A. and Mayes, C.},
 	year         = 2023,
 	month        = {05},
 	booktitle    = {Proc. IPAC'23},
