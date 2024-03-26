@@ -82,19 +82,22 @@ SBend = namedtuple('SBend',
                        'F_INT_X',
                        'H_GAP_X',
                        'FRINGE_AT',
-                       'FRINGE_TYPE'
+                       'FRINGE_TYPE',
+                       'TILT'
                    ],
-                   defaults=(None,
-                             None, 
-                             None, 
-                             0.0, 
-                             0.0, 
-                             0.0, 
-                             0.0, 
-                             0.0, 
-                             0.0, 
-                             0.0, 
-                             "both_ends", 
-                             "none"
-                            )
+                   defaults=(
+                       None,
+                       None, 
+                       None, 
+                       0.0, 
+                       0.0, 
+                       0.0, 
+                       0.0, 
+                       0.0, 
+                       0.0, 
+                       0.0, 
+                       "both_ends", 
+                       "none",
+                       0.0
+                       )
                   )

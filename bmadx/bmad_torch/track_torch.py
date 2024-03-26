@@ -197,7 +197,8 @@ class TorchSBend(TorchElement):
         F_INT_X: Tensor = torch.tensor(0.0),
         H_GAP_X: Tensor = torch.tensor(0.0),
         FRINGE_AT: str = "both_ends",
-        FRINGE_TYPE: str = "none"
+        FRINGE_TYPE: str = "none",
+        TILT: Tensor = torch.tensor(0.0)
     ):
         
         fringe_at_dic =  {
@@ -232,6 +233,7 @@ class TorchSBend(TorchElement):
         self.register_parameter("H_GAP", Parameter(H_GAP_X, requires_grad=False))
         self.register_parameter("F_INT_X", Parameter(F_INT_X, requires_grad=False))
         self.register_parameter("H_GAP_X", Parameter(H_GAP_X, requires_grad=False))
+        self.register_parameter("TILT", Parameter(TILT, requires_grad=False))
         self.FRINGE_AT = FRINGE_AT
         self.FRINGE_TYPE = FRINGE_TYPE
         #self.register_buffer("FRINGE_AT", torch.tensor(fringe_at_dic[FRINGE_AT]))
