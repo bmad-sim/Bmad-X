@@ -11,7 +11,7 @@ from bmadx.low_level.offset_particle import make_offset_particle
 
 def make_track_a_bend(lib):
     
-    body, ent_hard, exit_hard,  ent_soft, exit_soft = make_track_a_sbend_parts(lib)
+    body, ent_linear, exit_linear, ent_hard, exit_hard,  ent_soft, exit_soft = make_track_a_sbend_parts(lib)
     offset_particle_set = make_offset_particle(lib, 'set')
     offset_particle_unset = make_offset_particle(lib, 'unset')
     
@@ -25,6 +25,26 @@ def make_track_a_bend(lib):
         if fringe_type == "none" :
             p1 = body(par, bend)
             return offset_particle_unset(0.0, 0.0, bend.TILT, p1)
+        
+        elif fringe_type == "linear":
+            if fringe_at == "both_ends":
+                p1 = ent_linear(par, bend)
+                p2 = body(p1, bend)
+                p3 = exit_linear(p2, bend)
+                return offset_particle_unset(0.0, 0.0, bend.TILT, p3)
+            elif fringe_at == "entrance_end":
+                p1 = ent_linear(par, bend)
+                p2 = body(p1, bend)
+                return offset_particle_unset(0.0, 0.0, bend.TILT, p2)
+            elif fringe_at == "exit_end":
+                p1 = body(par, bend)
+                p2 = exit_linear(p1, bend)
+                return offset_particle_unset(0.0, 0.0, bend.TILT, p2)
+            elif fringe_at=="no_end":
+                p1 = body(par, bend)
+                return offset_particle_unset(0.0, 0.0, bend.TILT, p1)
+            else:
+                raise ValueError(f"Unknown fringe_at setting {fringe_at}!!")
         elif fringe_type == "hard_edge_only":
 
             if fringe_at == "both_ends":
@@ -178,6 +198,62 @@ def make_track_a_sbend_parts(lib):
         s = s+L
         
         return Particle(xf, pxf, yf, pyf, zf, pzf, s, p0c, mc2)
+
+    def track_entrance_linear(p_in, bend):
+        g = bend.G
+        dg = bend.DG
+        e1 = bend.E1
+        f_int = bend.F_INT
+        h_gap = bend.H_GAP
+
+        g_tot = g + dg
+        hx = g_tot * tan(e1)
+        hy = -g_tot*tan(
+            e1 -
+            2 * f_int * h_gap * g_tot * ( 1 + sin(e1)**2 ) / 
+            cos(e1)
+        )
+        px_f = p_in.px + p_in.x * hx
+        py_f = p_in.py + p_in.y * hy
+
+        return Particle(
+            p_in.x, 
+            px_f, 
+            p_in.y, 
+            py_f, 
+            p_in.z, 
+            p_in.pz, 
+            p_in.s, 
+            p_in.p0c, 
+            p_in.mc2)
+    
+    def track_exit_linear(p_in, bend):
+        g = bend.G
+        dg = bend.DG
+        e2 = bend.E2
+        f_int = bend.F_INT
+        h_gap = bend.H_GAP
+
+        g_tot = g + dg
+        hx = g_tot * tan(e2)
+        hy = -g_tot * tan(
+            e2 -
+            2 * f_int * h_gap * g_tot * ( 1 + sin(e2)**2 ) / 
+            cos(e2)
+        )
+        px_f = p_in.px + p_in.x * hx
+        py_f = p_in.py + p_in.y * hy
+
+        return Particle(
+            p_in.x, 
+            px_f, 
+            p_in.y, 
+            py_f, 
+            p_in.z, 
+            p_in.pz, 
+            p_in.s, 
+            p_in.p0c, 
+            p_in.mc2)
 
     def track_entrance_hard(p_in, bend):
         L = bend.L
@@ -392,6 +468,6 @@ def make_track_a_sbend_parts(lib):
         
         return Particle(xf, pxf, yf, pyf, zf, pzf, s, p0c, mc2) 
     
-    return track_body, track_entrance_hard, track_exit_hard, track_entrance_soft, track_exit_soft
+    return track_body, track_entrance_linear, track_exit_linear, track_entrance_hard, track_exit_hard, track_entrance_soft, track_exit_soft
 
 
