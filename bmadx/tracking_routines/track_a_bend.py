@@ -26,7 +26,8 @@ def make_track_a_bend(lib):
             p1 = body(par, bend)
             return offset_particle_unset(0.0, 0.0, bend.TILT, p1)
         
-        elif fringe_type == "linear":
+        elif fringe_type == "linear_edge":
+
             if fringe_at == "both_ends":
                 p1 = ent_linear(par, bend)
                 p2 = body(p1, bend)
@@ -45,6 +46,7 @@ def make_track_a_bend(lib):
                 return offset_particle_unset(0.0, 0.0, bend.TILT, p1)
             else:
                 raise ValueError(f"Unknown fringe_at setting {fringe_at}!!")
+            
         elif fringe_type == "hard_edge_only":
 
             if fringe_at == "both_ends":
@@ -231,8 +233,8 @@ def make_track_a_sbend_parts(lib):
         g = bend.G
         dg = bend.DG
         e2 = bend.E2
-        f_int = bend.F_INT
-        h_gap = bend.H_GAP
+        f_int = bend.F_INT_X
+        h_gap = bend.H_GAP_X
 
         g_tot = g + dg
         hx = g_tot * tan(e2)
