@@ -66,8 +66,9 @@ def make_track_a_bend(lib):
                 return offset_particle_unset(0.0, 0.0, bend.TILT, p1)
             else:
                 raise ValueError(f"Unknown fringe_at setting {fringe_type}!!")
+            
+        elif fringe_type == "soft_edge_only": 
         
-            # apply fringe functions
             if fringe_at == "both_ends":
                 p1 = ent_soft(par, bend)
                 p2 = body(p1, bend)
@@ -87,6 +88,10 @@ def make_track_a_bend(lib):
             else:
                 raise ValueError(f"Unknown fringe_at setting {fringe_at}!!")
             
+        elif fringe_type == "full":
+            raise NotImplementedError("FULL FRINGE to be implemented...")
+        else:
+            raise ValueError(f"Unknown fringe_at setting {fringe_type}!!")
     return track_a_bend
 
 
@@ -278,14 +283,14 @@ def make_track_a_sbend_parts(lib):
         tan1 = tan(e1)
         sec1 = 1 / cos(e1)
 
-        Sigma_M1 = (
-            (x**2 - y**2) * g_tot*tan1/2
-            + y**2 * g_tot**2 * sec1**3 * (1 + sin1**2) * f_int*h_gap /2/(1 + pz)
-            - x**3 * g_tot**2 * tan1**3 /12/(1 + pz)
-            + x*y**2 * g_tot**2 * tan1 * sec1**2/4/(1 + pz)
-            + (x**2 * px - x*y*py) * g_tot*tan1**2 /2/(1 + pz)
-            + y**2 * px * g_tot * (1 + tan1**2) / 2 / (1 + pz)
-        )
+        #Sigma_M1 = (
+        #    (x**2 - y**2) * g_tot*tan1/2
+        #    + y**2 * g_tot**2 * sec1**3 * (1 + sin1**2) * f_int*h_gap /2/(1 + pz)
+        #    - x**3 * g_tot**2 * tan1**3 /12/(1 + pz)
+        #    + x*y**2 * g_tot**2 * tan1 * sec1**2/4/(1 + pz)
+        #    + (x**2 * px - x*y*py) * g_tot*tan1**2 /2/(1 + pz)
+        #    + y**2 * px * g_tot * (1 + tan1**2) / 2 / (1 + pz)
+        #)
                 
         #Sigma_M1 = (
         #    (x**2 - y**2) * g_tot*tan1/2
