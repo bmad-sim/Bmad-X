@@ -292,9 +292,7 @@ def make_track_a_sbend_parts(lib):
             + (x**2 * px - x*y*py) * g_tot*tan1**2 /2/(1 + pz)
             + y**2 * px * g_tot * (1 + tan1**2) / 2 / (1 + pz)
         )
-        
-        print("Sigma_M1:", Sigma_M1)
-        
+                
         #Sigma_M1 = (
         #    (x**2 - y**2) * g_tot*tan1/2
         #    + y**2 * g_tot**2 * sec1**3 * (1 + sin1**2) * f_int*h_gap /2/(1 + pz)
