@@ -1,8 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from copy import deepcopy
 
 SPACE_COORDS = ('x', 'y', 'z')
 MOMENTUM_COORDS = ('px', 'py', 'pz')
+
 
 def plot_projections(
         particles,
@@ -157,7 +159,7 @@ def plot_projections(
                            cmap = mycmap,
                            vmin = background)
             
-            ax[j,i].get_shared_x_axes().join(ax[j,i], ax[i,i])
+            #ax[j,i].get_shared_x_axes().join(ax[j,i], ax[i,i])
 
             ax[i,j].set_visible(False)
 
