@@ -19,7 +19,6 @@ def make_track_a_bend(lib):
         fringe_type = bend.FRINGE_TYPE.lower()
         fringe_at = bend.FRINGE_AT.lower()
         
-<<<<<<< Updated upstream
         par = offset_particle_set(0.0, 0.0, bend.TILT, p_in)
         
         if fringe_type == "none" :
@@ -65,29 +64,11 @@ def make_track_a_bend(lib):
             elif fringe_at=="no_end":
                 p1 = body(par, bend)
                 return offset_particle_unset(0.0, 0.0, bend.TILT, p1)
-=======
-        par = p_in
-        
-        if fringe_type == "none" :
-            par = body(par, bend)
-            return par
-        else:
-            # set fringe functions
-            if fringe_type == "hard_edge_only":
-                f_ent = ent_hard
-                f_exit = exit_hard
-            elif fringe_type == "soft_edge_only":
-                f_ent = ent_soft
-                f_exit = exit_soft
-            elif fringe_type == "full":
-                raise NotImplementedError("FULL FRINGE to be implemented...")
->>>>>>> Stashed changes
             else:
                 raise ValueError(f"Unknown fringe_at setting {fringe_type}!!")
         
             # apply fringe functions
             if fringe_at == "both_ends":
-<<<<<<< Updated upstream
                 p1 = ent_soft(par, bend)
                 p2 = body(p1, bend)
                 p3 = exit_soft(p2, bend)
@@ -103,23 +84,6 @@ def make_track_a_bend(lib):
             elif fringe_at=="no_end":
                 p1 = body(par, bend)
                 return offset_particle_unset(0.0, 0.0, bend.TILT, p1)
-=======
-                p1 = f_ent(par, bend)
-                p2 = body(p1, bend)
-                p3 = f_exit(p2, bend)
-                return p3
-            elif fringe_at == "entrance_end":
-                p1 = f_ent(par, bend)
-                p2 = body(p1, bend)
-                return p2
-            elif fringe_at == "exit_end":
-                p1 = body(par, bend)
-                p2 = f_exit(p1, bend)
-                return p2
-            elif fringe_at=="no_end":
-                p1 = body(p1, bend)
-                return p1
->>>>>>> Stashed changes
             else:
                 raise ValueError(f"Unknown fringe_at setting {fringe_at}!!")
             
