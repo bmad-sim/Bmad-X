@@ -88,15 +88,8 @@ def make_track_a_sbend_parts(lib):
         return sinc(x/PI)
     
     def cosc(x):
-        # FIX to make it branchless: (cos(x)-1)/x**2 = -1/2 [sinc(x/2)]**2
+        # branchless: (cos(x)-1)/x**2 = -1/2 [sinc(x/2)]**2
         return -sinc(x/PI/2)**2/2
-        #if x == 0:
-        #    return -0.5
-        #else:
-        #    return (cos(x) - 1) / x**2
-        #eps = 2.220446049250313e-16
-        #x = x + eps
-        #return (cos(x) - 1) / x**2
     
     def track_body(p_in, bend):
         """Tracks the incoming Particle p_in though a sbend (k1=0) element
@@ -169,10 +162,7 @@ def make_track_a_sbend_parts(lib):
         yf = y + py * Lp / px_norm
         pyf = py
         zf = z + (beta * L / beta0) - ((1 + pz) * Lp / px_norm)
-        pzf = pz
-
-        #return np.array([xf, pxf, yf, pyf, zf, pzf])        
-        
+        pzf = pz   
         
         s = s+L
         
@@ -185,8 +175,8 @@ def make_track_a_sbend_parts(lib):
         dg = bend.DG
         p0c = bend.P0C
         e1 = bend.E1
-        f_int = bend.F_INT
-        h_gap = bend.H_GAP
+        f_int = bend.FINT
+        h_gap = bend.HGAP
     
         p0c_particle = p_in.p0c 
         
@@ -254,8 +244,8 @@ def make_track_a_sbend_parts(lib):
         dg = bend.DG
         p0c = bend.P0C
         e2 = bend.E2
-        f_int = bend.F_INT_X
-        h_gap = bend.H_GAP_X
+        f_int = bend.FINTX
+        h_gap = bend.HGAPX
         
         p0c_particle = p_in.p0c 
         
@@ -315,8 +305,8 @@ def make_track_a_sbend_parts(lib):
         dg = bend.DG
         p0c = bend.P0C
         e1 = bend.E1
-        f_int = bend.F_INT
-        h_gap = bend.H_GAP
+        f_int = bend.FINT
+        h_gap = bend.HGAP
     
         p0c_particle = p_in.p0c 
         
@@ -357,8 +347,8 @@ def make_track_a_sbend_parts(lib):
         dg = bend.DG
         p0c = bend.P0C
         e1 = bend.E1
-        f_int = bend.F_INT_X
-        h_gap = bend.H_GAP_X
+        f_int = bend.FINTX
+        h_gap = bend.HGAPX
     
         p0c_particle = p_in.p0c 
         
@@ -397,8 +387,8 @@ def make_track_a_sbend_parts(lib):
         g = bend.G
         dg = bend.DG
         e1 = bend.E1
-        f_int = bend.F_INT
-        h_gap = bend.H_GAP
+        f_int = bend.FINT
+        h_gap = bend.HGAP
 
         g_tot = g + dg
         hx = g_tot * tan(e1)
@@ -425,8 +415,8 @@ def make_track_a_sbend_parts(lib):
         g = bend.G
         dg = bend.DG
         e2 = bend.E2
-        f_int = bend.F_INT_X
-        h_gap = bend.H_GAP_X
+        f_int = bend.FINTX
+        h_gap = bend.HGAPX
 
         g_tot = g + dg
         hx = g_tot * tan(e2)
