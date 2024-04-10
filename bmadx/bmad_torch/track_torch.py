@@ -229,8 +229,8 @@ class TorchSBend(TorchElement):
         self.register_parameter("E2", Parameter(E2, requires_grad=False))
         self.register_parameter("FINT", Parameter(FINT, requires_grad=False))
         self.register_parameter("HGAP", Parameter(HGAP, requires_grad=False))
-        self.register_parameter("FINT", Parameter(FINTX, requires_grad=False))
-        self.register_parameter("HGAP", Parameter(HGAPX, requires_grad=False))
+        self.register_parameter("FINTX", Parameter(FINTX, requires_grad=False))
+        self.register_parameter("HGAPX", Parameter(HGAPX, requires_grad=False))
         self.register_parameter("TILT", Parameter(TILT, requires_grad=False))
         self.FRINGE_AT = FRINGE_AT
         self.FRINGE_TYPE = FRINGE_TYPE
