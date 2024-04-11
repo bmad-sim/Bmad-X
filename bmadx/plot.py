@@ -4,6 +4,14 @@ from copy import deepcopy
 
 SPACE_COORDS = ('x', 'y', 'z')
 MOMENTUM_COORDS = ('px', 'py', 'pz')
+LABELS = {
+    'x': 'x', 
+    'px': 'p_x',
+    'y': 'y', 
+    'py': 'p_y', 
+    'z': 'z', 
+    'pz': 'p_z'
+    }
 
 
 def plot_projections(
@@ -114,19 +122,19 @@ def plot_projections(
 
         if x_coord=='pz':
             x_array = getattr(particles, x_coord)*100
-            ax[n_coords-1,i].set_xlabel(f'{x_coord} (%)')
+            ax[n_coords-1,i].set_xlabel(f'${LABELS[x_coord]}$ (%)')
             min_x = coord_min[i]*100
             max_x = coord_max[i]*100
             if i>0:
-                ax[i,0].set_ylabel(f'{x_coord} (%)')
+                ax[i,0].set_ylabel(f'${LABELS[x_coord]}$ (%)')
 
         else:
             x_array = getattr(particles, x_coord)*scale
-            ax[n_coords-1,i].set_xlabel(f'{x_coord} ({x_coord_unit})')
+            ax[n_coords-1,i].set_xlabel(f'${LABELS[x_coord]}$ ({x_coord_unit})')
             min_x = coord_min[i]*scale
             max_x = coord_max[i]*scale
             if i>0:
-                ax[i,0].set_ylabel(f'{x_coord} ({x_coord_unit})')
+                ax[i,0].set_ylabel(f'${LABELS[x_coord]}$ ({x_coord_unit})')
 
         ax[i,i].hist(x_array,
                      bins=bins,
@@ -159,7 +167,7 @@ def plot_projections(
                            cmap = mycmap,
                            vmin = background)
             
-            #ax[j,i].get_shared_x_axes().join(ax[j,i], ax[i,i])
+            ax[j,i].sharex(ax[i,i])
 
             ax[i,j].set_visible(False)
 
@@ -170,5 +178,5 @@ def plot_projections(
                 ax[j,i].xaxis.set_tick_params(labelbottom=False)
 
     fig.tight_layout()
-
+    
     return fig, ax
