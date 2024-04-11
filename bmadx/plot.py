@@ -21,7 +21,8 @@ def plot_projections(
         scale = 1e3,
         background = 0,
         same_lims = False,
-        custom_lims = None
+        custom_lims = None,
+        rasterized=True
         ):
     """
     Plot of coordinates projected into every possible 2D plane.
@@ -136,9 +137,12 @@ def plot_projections(
             if i>0:
                 ax[i,0].set_ylabel(f'${LABELS[x_coord]}$ ({x_coord_unit})')
 
-        ax[i,i].hist(x_array,
-                     bins=bins,
-                     range=([min_x, max_x]))
+        ax[i,i].hist(
+            x_array,
+            bins=bins,
+            range=([min_x, max_x]),
+            rasterized = rasterized
+        )
         
         ax[i,i].yaxis.set_tick_params(left=False, labelleft=False)
 
@@ -159,13 +163,15 @@ def plot_projections(
                 min_y = coord_min[j]*scale
                 max_y = coord_max[j]*scale
             
-            ax[j,i].hist2d(x_array,
-                           y_array,
-                           bins = bins,
-                           range=[[min_x, max_x],
-                                  [min_y, max_y]],
-                           cmap = mycmap,
-                           vmin = background)
+            ax[j,i].hist2d(
+                x_array,
+                y_array,
+                bins = bins,
+                range=[[min_x, max_x], [min_y, max_y]],
+                cmap = mycmap,
+                vmin = background,
+                rasterized = rasterized
+            )
             
             ax[j,i].sharex(ax[i,i])
 
