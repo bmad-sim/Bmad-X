@@ -26,6 +26,12 @@ jobs:
       #  run: |
       #    flake8 .
 
+      - name: Ensure importability
+        shell: bash -l {0}
+        run: |
+          cd /
+          python -c "import bmadx"
+
       - name: Run Tests
         shell: bash -l {0}
         run: |
