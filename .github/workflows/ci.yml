@@ -28,6 +28,11 @@ jobs:
       #  run: |
       #    flake8 .
 
+      - name: Show conda environment packages
+        shell: bash -l {0}
+        run: |
+          conda list
+
       - name: Ensure importability
         shell: bash -l {0}
         run: |
