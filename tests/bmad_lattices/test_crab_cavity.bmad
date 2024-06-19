@@ -7,7 +7,7 @@ beginning[p0c] = 4.0e7
 parameter[particle] = electron
 parameter[geometry] = open
 
-cav: crab_cavity, L = 0.2, VOLTAGE = 1.0e4, PHI0 = 0.5, RF_FREQUENCY = 1.0e9
+cav: crab_cavity, L = 0.2, VOLTAGE = 1.0e4, PHI0 = 0.5, RF_FREQUENCY = 1.0e9, NUM_STEPS=1
 
 lat: line = (cav)
 
