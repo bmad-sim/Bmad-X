@@ -4,32 +4,41 @@ on: [push, pull_request]
 
 jobs:
   build:
+    name: Test ${{ matrix.os }} (${{ matrix.python-version }})
     runs-on: ${{ matrix.os }}
     defaults:
-        run:
-          shell: bash
+      run:
+        shell: bash
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-latest]
+        python-version: ["3.10", "3.11", "3.12"]
     steps:
-      - uses: actions/checkout@v3
-      - uses: conda-incubator/setup-miniconda@v2
+      - uses: actions/checkout@v4
+      - uses: conda-incubator/setup-miniconda@v3
         with:
           python-version: ${{ matrix.python-version }}
           mamba-version: "*"
           channels: conda-forge
           activate-environment: bmadx
           environment-file: environment.yml
-          
+
       #- name: flake8
       #  shell: bash -l {0}
       #  run: |
       #    flake8 .
 
-      - name: Install Bmad-X
+      - name: Show conda environment packages
         shell: bash -l {0}
         run: |
-          pip install --no-dependencies .
+          conda list
+
+      - name: Ensure importability
+        shell: bash -l {0}
+        run: |
+          cd /
+          python -c "import bmadx"
 
       - name: Run Tests
         shell: bash -l {0}

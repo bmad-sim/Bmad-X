@@ -2,13 +2,11 @@ name: bmadx
 channels:
   - conda-forge
   - pytorch
-  - nvidia
 dependencies:
   - python >=3.10
   - ipython
   - ipykernel
   - pytorch
-  - pytorch-cuda >=11.7
   - numpy
   - matplotlib
   - pytest
