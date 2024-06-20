@@ -133,7 +133,7 @@ def bmadx_particles_to_openpmd(particle: Particle):
     dat['t'] = - z / (C_LIGHT * beta)
 
     dat['status'] = np.ones_like(x, dtype=int)
-    dat['weight'] = - np.ones_like(x) * E_CHARGE
+    dat['weight'] = np.ones_like(x) * E_CHARGE
 
     if np.isclose(particle.mc2, M_ELECTRON):
         dat['species'] = 'electron'
